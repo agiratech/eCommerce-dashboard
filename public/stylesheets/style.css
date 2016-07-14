@@ -1,8 +1,35 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+
+.grid {
+    border: 2px solid rgb(212,212,212);
+    width: 100%;
+    height: 400px
 }
 
-a {
-  color: #00B7FF;
+.tooltip {
+    position: relative;
+    display: inline-block;
+    visibility: visible;
+
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 400px;
+    background-color: #EFFBE2;
+    color: #6F9B3F;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

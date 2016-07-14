@@ -1,1 +1,1 @@
-app = angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies']);
+app = angular.module('RDash', ['ui.bootstrap', 'ui.router', 'ngCookies', 'ui.grid']);
