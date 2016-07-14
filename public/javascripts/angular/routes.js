@@ -18,6 +18,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('tables', {
                 url: '/tables',
                 templateUrl: 'templates/tables.html'
+            })
+            .state('retailers', {
+                url: '/retailers',
+                templateUrl: 'templates/retailers.html',
+                controller: 'RetailerList'
             });
     }
 ]);
