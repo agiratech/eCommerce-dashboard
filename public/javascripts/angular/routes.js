@@ -22,7 +22,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('retailers', {
                 url: '/retailers',
                 templateUrl: 'templates/retailers.html',
-                controller: 'RetailerList'
+                // controller: 'RetailerList'
+            })
+            .state('retailerDetails', {
+                url: '/retailerDetails',
+                templateUrl: 'templates/retailerDetails.html',
+                // controller: 'RetailerList'
+            })
+            .state('retaildashShippingOptions', {
+                url: '/retaildashShippingOptions',
+                templateUrl: 'templates/retaildashShippingOptions.html',
+                // controller: 'RetaildashShippingOptionList'
             });
     }
 ]);

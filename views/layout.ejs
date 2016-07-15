@@ -8,9 +8,11 @@
       <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
         <% include partials/sidebar %> <!-- Sidebar -->
         <div id="content-wrapper">
-          <div class="page-content">
+          <div class="page-content" ng-controller="RetailerList">
             <% include partials/headerbar %> <!-- Header Bar -->
-            <div ui-view></div> <!-- Main Content -->
+            <div ui-view>
+              <%- body %>
+            </div> <!-- Main Content -->
           </div><!-- End Page Content -->
         </div><!-- End Content Wrapper -->
       </div><!-- End Page Wrapper -->
