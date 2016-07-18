@@ -2,7 +2,7 @@
 sample ShippingAddresses controller
 **/
 
-app.controller("ShippingAddresses", ['$location','$scope','$http', function($location,$scope,$http) {
+app.controller("ShippingAddresses", ['$location','$rootScope','$scope','$http', function($location,$rootScope,$scope,$http) {
         $scope.rowship = '';
         $scope.GetAllData = function () {
             $http.get('http://localhost:8000/v1/shippingAddresses')
@@ -20,7 +20,7 @@ app.controller("ShippingAddresses", ['$location','$scope','$http', function($loc
             console.log(rows)
             $http.get('http://localhost:8000/v1/shippingAddress/' + rows)
               .success(function (data, status, headers, config) {
-                  $scope.rowship = data.shippingAddress;
+                  $rootScope.rowship = data.shippingAddress;
                   console.log($scope.rowship)
                   $location.path('/shippingAddress/show')
               })

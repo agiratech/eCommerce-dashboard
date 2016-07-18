@@ -2,7 +2,7 @@
 sample RetailerShippingOptions controler
 **/
 
-app.controller("RetailerShippingOptions", ['$uibModal','$location','$scope','$http', function ($uibModal,$location,$scope,$http) {
+app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope','$scope','$http', function ($uibModal,$location,$rootScope,$scope,$http) {
         // $rootScope.row = "";
         // $scope.keyword = '';
         $scope.form = [];
@@ -26,8 +26,9 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$scope','$ht
             console.log(row.retailerId)
             $http.get('http://localhost:8000/v1/retailerShippingOption/' + row)
               .success(function (data, status, headers, config) {
-                  $scope.row = data.retailerShippingOptions;
+                  $rootScope.row = data.retailerShippingOptions;
                   console.log($scope.row)
+                  console.log(data.retailerShippingOptions)
                   $location.path('/retailerShippingOption/show')
               })
               .error(function (data, status, header, config) {
@@ -56,21 +57,21 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$scope','$ht
         // // alert("Test");
         // };
 
-        $scope.generateDelete = function(row) {
-          $http.delete('http://localhost:8000/v1/retailerShippingOption/' + row.id, {params: {row:row}})
-              .success(function (data, status, headers, config) {
-                  $scope.row1 = data.retailerShippingOptions;
-                  console.log(11111111111)
-                  console.log($scope.row1)
-              })
-              .error(function (data, status, header, config) {
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
-              });
+        // $scope.generateDelete = function(row) {
+        //   $http.delete('http://localhost:8000/v1/retailerShippingOption/' + row.id, {params: {row:row}})
+        //       .success(function (data, status, headers, config) {
+        //           $scope.row1 = data.retailerShippingOptions;
+        //           console.log(11111111111)
+        //           console.log($scope.row1)
+        //       })
+        //       .error(function (data, status, header, config) {
+        //           $scope.ResponseDetails = "Data: " + data +
+        //               "<br />status: " + status +
+        //               "<br />headers: " + jsonFilter(header) +
+        //               "<br />config: " + jsonFilter(config);
+        //       });
           // alert("Test");
-        };
+        // };
         console.log($scope.GetAllData())
         $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'name'},{name: 'retailerName'}, {name: 'retaildashShippingOptionName'}, {name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.generateDetails(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.generateEdit(row.entity.id)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.generateDelete(row.entity)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
         };
