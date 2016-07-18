@@ -29,11 +29,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'templates/retailerShippingOptions.html',
                 controller: 'RetailerShippingOptions'
             })
-            .state('retailerShippingOptionShow', {
-                url: '/retailerShippingOption/show',
-                templateUrl: 'templates/retailerShippingOptionShow.html',
-                controller: 'RetailerShippingOptions'
-            })
+            // .state('retailerShippingOptionShow', {
+            //     url: '/retailerShippingOption/show',
+            //     templateUrl: 'templates/retailerShippingOptionShow.html',
+            //     controller: 'RetailerShippingOptions'
+            // })
             .state('retailerShippingOptionEdit', {
                 url: '/retailerShippingOption/edit',
                 templateUrl: 'templates/retailerShippingOptionEdit.html',

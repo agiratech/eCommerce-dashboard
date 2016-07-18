@@ -1,33 +1,22 @@
-<div class = "ng-scope ng-binding" data-ng-controller="RetailerShippingOptions">
-  <h3>Retailer Shipping Options Details</h3>
-    <div class="row">
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        Name
-      </div>
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        {{row.name}}
-      </div>
-    </div>
-    <div class="row">
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        RetailerName
-      </div>
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        {{row.retailerName}}
-      </div>
-    </div>
-    <div class="row">
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        RetaildashShippingOptionName
-      </div>
-      <div class = "col-lg-6 col-md-6 col-sm-6">
-        {{row.retaildashShippingOptionName}}
-      </div>
-    </div>
+<div class="modal-header">
+<button type="button" class="close" ng-click="close()">&times;</button>
+<h3 class="modal-title">Retailer Shipping Option Detail</h3>
 </div>
-
-<script>
-function TodoController($scope) {
-  console.log($scope)
-}
-</script>
+<div class="modal-body">
+<table style="width:100%">
+  <tr>
+    <td>Name</td>
+    <td>{{retailerShippingOption.name}}</td>
+  </tr>
+  <tr>
+    <td>RetailerName</td>
+    <td>
+    {{retailerShippingOption.retailerName}}</td>
+  </tr>
+  <tr>
+  <tr>
+    <td>RetaildashShippingOptionName</td>
+    <td>{{retailerShippingOption.retaildashShippingOptionName}}</td>
+  </tr>
+</table>
+</div>
