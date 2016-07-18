@@ -23,6 +23,46 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/retailers',
                 templateUrl: 'templates/retailers.html',
                 controller: 'RetailerList'
+            })
+            .state('retailerShippingOptions', {
+                url: '/retailerShippingOptions',
+                templateUrl: 'templates/retailerShippingOptions.html',
+                // controller: 'RetailerShippingOptions'
+            })
+            .state('retailerShippingOptionShow', {
+                url: '/retailerShippingOption/show',
+                templateUrl: 'templates/retailerShippingOptionShow.html',
+                // controller: 'RetailerShippingOptions'
+            })
+            .state('retailerShippingOptionEdit', {
+                url: '/retailerShippingOption/edit',
+                templateUrl: 'templates/retailerShippingOptionEdit.html',
+                // controller: 'RetailerShippingOptions'
+            })
+            .state('retailerShippingOptionDelete', {
+                url: '/retailerShippingOption/delete',
+                templateUrl: 'templates/retailerShippingOptionDelete.html',
+                // controller: 'RetailerShippingOptions'
+            })
+            .state('shippingAddresses', {
+                url: '/shippingAddresses',
+                templateUrl: 'templates/shippingAddresses.html',
+                controller: 'ShippingAddresses'
+            })
+            .state('shippingAddressShow', {
+                url: '/shippingAddress/show',
+                templateUrl: 'templates/shippingAddresseShow.html',
+                controller: 'ShippingAddresses'
+            })
+            .state('shippingAddresseEdit', {
+                url: '/shippingAddresse',
+                templateUrl: 'templates/shippingAddresse.html',
+                controller: 'ShippingAddresses'
+            })
+            .state('shippingAddresseDelete', {
+                url: '/shippingAddresse/Delete',
+                templateUrl: 'templates/shippingAddresseDelete.html',
+                controller: 'ShippingAddresses'
             });
     }
 ]);
