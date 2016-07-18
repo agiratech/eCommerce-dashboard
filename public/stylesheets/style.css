@@ -45,3 +45,6 @@ th, td {
 h2 {
   color: #3A5479
 }
+.addButton {
+    text-align: right;
+}
