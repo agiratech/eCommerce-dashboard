@@ -1,0 +1,63 @@
+<h2>Retailer Details</h2>
+  <table style="width:100%">
+    <tr>
+      <td><b>Id</b></td>
+      <td>{{retailerInfo.id}}</td>
+    </tr>
+    <tr>
+      <td><b>Name</b></td>
+      <td>{{retailerInfo.name}}</td>
+    </tr>
+    <tr>
+      <td><b>BaseUrl</b></td>
+      <td><a href="{{retailerInfo.baseUrl}}" target="_blank">{{retailerInfo.baseUrl}}</a></td>
+    </tr>
+    <tr>
+      <td><b>Currency</b></td>
+      <td>{{retailerInfo.currency}}</td>
+    </tr>
+    <tr>
+      <td><b>Crawl Days</b></td>
+      <td>{{retailerInfo.crawlDays}}</td>
+    </tr>
+    <tr>
+      <td><b>Crawl Time</b></td>
+      <td>{{retailerInfo.crawlTime}}</td>
+    </tr>
+    <tr>
+      <td><b>Active</b></td>
+      <td>{{retailerInfo.active}}</td>
+    </tr>
+  </table>
+  <h2>Retailer Product Configuration Details</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Product ID</th>
+      <th>Description</th>
+      <th>Url</th>
+      <th>Url Type</th>
+      <th>Active</th>
+    </tr>
+    <tr ng-repeat="product in retailerInfo.products">
+      <td>{{product.id}}</td>
+      <td>{{product.description}}</td>
+      <td><a href="{{product.url}}" target="_blank">{{product.url}}</a></td>
+      <td>{{product.urlType}}</td>
+      <td>{{product.active}}</td>
+    </tr>
+  </table>
+  <h2>Retailer Shipping Options</h2>
+  <table style="width:100%">
+    <tr>
+      <th>Shipping Option ID</th>
+      <th>Description</th>
+      <th>Standardized Description</th>
+      <th>Standardized Id</th>
+    </tr>
+    <tr ng-repeat="shippingOption in retailerInfo.shippingOptions">
+      <td>{{shippingOption.id}}</td>
+      <td>{{shippingOption.description}}</td>
+      <td>{{shippingOption.standardizedDescription}}</td>
+      <td>{{shippingOption.standardizedId}}</td>
+    </tr>
+  </table>

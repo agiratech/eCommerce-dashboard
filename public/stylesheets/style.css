@@ -33,3 +33,18 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+table, th, td {
+    border: 1px solid rgb(212,212,212);
+    border-collapse: collapse;
+
+}
+th, td {
+  padding: 5px;
+}
+h2 {
+  color: #3A5479
+}
+.addButton {
+    text-align: right;
+}

@@ -63,6 +63,17 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/shippingAddresse/Delete',
                 templateUrl: 'templates/shippingAddresseDelete.html',
                 controller: 'ShippingAddresses'
+                // controller: 'RetailerList'
+            })
+            .state('retailerDetails', {
+                url: '/retailerDetails',
+                templateUrl: 'templates/retailerDetails.html',
+                // controller: 'RetailerList'
+            })
+            .state('retaildashShippingOptions', {
+                url: '/retaildashShippingOptions',
+                templateUrl: 'templates/retaildashShippingOptions.html',
+                // controller: 'RetaildashShippingOptionList'
             });
     }
 ]);
