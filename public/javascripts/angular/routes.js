@@ -29,6 +29,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'templates/retailerShippingOptions.html',
                 controller: 'RetailerShippingOptions'
             })
+            .state('retailerLoginAccounts', {
+                url: '/retailerLoginAccounts',
+                templateUrl: 'templates/retailerLoginAccounts.html',
+                controller: 'RetailerLoginAccounts'
+            })
             .state('shippingAddresses', {
                 url: '/shippingAddresses',
                 templateUrl: 'templates/shippingAddresses.html',

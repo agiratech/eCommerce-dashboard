@@ -21,26 +21,6 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
                     "<br />config: " + jsonFilter(config);
             });
         };
-
-        $scope.generateDetails = function(row) {
-            console.log(row.retailerId)
-            $http.get('http://localhost:8000/v1/retailerShippingOption/' + row)
-              .success(function (data, status, headers, config) {
-                  $rootScope.row = data.retailerShippingOptions;
-                  console.log($scope.row)
-                  console.log(data.retailerShippingOptions)
-                  $location.path('/retailerShippingOption/show')
-              })
-              .error(function (data, status, header, config) {
-                console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
-              });
-          console.log($scope.row);
-          // alert("Test");
-        };
         // show the shipping option detail
         $scope.showRow = function(show) {
           var modalInstance = $uibModal.open({
