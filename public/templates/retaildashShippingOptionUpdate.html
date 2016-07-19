@@ -1,0 +1,19 @@
+<div class="modal-header">
+<button type="button" class="close" ng-click="close()">&times;</button>
+<h3 class="modal-title">Update Retaildash Shipping Option</h3>
+</div>
+<div class="modal-body">
+<table style="width:100%">
+  <tr>
+    <td>Id</td>
+    <td><input type="text" ng-model="retaildashShippingOptionId" readonly/></td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><input type="text" ng-model="retaildashShippingOptionName"/></td>
+  </tr>
+</table>
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" type="button" ng-click="updateRetaildashShippingOption()">Update</button>
+</div>

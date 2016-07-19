@@ -1,11 +1,97 @@
-app.controller("RetaildashShippingOptionList", function($scope,myFactory,$location) {
+app.controller("RetaildashShippingOptionList", function($uibModal,$scope,myFactory,$location) {
   myFactory.getData("retaildashShippingOptions").then(function(response) {
     $scope.retaildashShippingOptionList = response.data.retaildashShippingOptions;
   }, function(response) {
     alert(response.status);
     alert(response.data);
   });
+  $scope.create = function () {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retaildashShippingOptionCreate.html',
+    controller: 'CreateRetaildashShippingOption',
+    });
+  };
+  $scope.update = function (id) {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retaildashShippingOptionUpdate.html',
+    controller: 'UpdateRetaildashShippingOption',
+    resolve: {
+               param: function () {
+                   return {'retaildashShippingOptionId' : id };
+               }
+              }
+    });
+  };
+  $scope.delete = function (id) {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retaildashShippingOptionDelete.html',
+    controller: 'DeleteRetaildashShippingOption',
+    resolve: {
+               param: function () {
+                   return {'retaildashShippingOptionId' : id };
+               }
+              }
+    });
+  };
   $scope.gridOptionsForRetaildash = {data: 'retaildashShippingOptionList', columnDefs: [
-      { name: 'name'},{name: 'Events', cellTemplate: '<div><a>Show</a></div>'}],
+      { name: 'name'},{name: 'Events', cellTemplate: '<div><button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
+  };
+});
+
+app.controller('CreateRetaildashShippingOption', function($scope, $uibModalInstance,myFactory) {
+  $scope.retaildashShippingOptionName = "";
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  $scope.createRetaildashShippingOption = function() {
+    var parameter = {"name":$scope.retaildashShippingOptionName};
+    console.log($scope.retaildashShippingOptionName)
+    console.log(parameter);
+    myFactory.createData("retaildashShippingOption",parameter).then(function(response) {
+    console.log(response.data);
+    window.location.reload();
+    $scope.close();
+    }, function(response) {
+      alert(response.status);
+      console.log(response.data);
+    });
+  };
+});
+
+app.controller('UpdateRetaildashShippingOption', function($scope, $uibModalInstance, myFactory,param) {
+  $scope.retaildashShippingOptionName = "";
+  $scope.retaildashShippingOptionId = param.retaildashShippingOptionId;
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  $scope.updateRetaildashShippingOption = function() {
+    var parameter = {"name":$scope.retaildashShippingOptionName};
+    console.log($scope.retaildashShippingOptionName)
+    console.log(parameter);
+    myFactory.updateData("retaildashShippingOption/"+param.retaildashShippingOptionId,parameter).then(function(response) {
+    console.log(response.data);
+    $scope.close();
+    window.location.reload();
+    }, function(response) {
+      alert(response.status);
+      console.log(response.data);
+    });
+  };
+});
+
+app.controller('DeleteRetaildashShippingOption', function($scope, $uibModalInstance, myFactory,param) {
+  $scope.retaildashShippingOptionID = param.retaildashShippingOptionId;
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  $scope.deleteRetaildashShippingOption = function() {
+    myFactory.deleteData("retaildashShippingOption/"+param.retaildashShippingOptionId).then(function(response) {
+    console.log(response.data);
+    $scope.close();
+    window.location.reload();
+    }, function(response) {
+      alert(response.status);
+      console.log(response.data);
+    });
   };
 });

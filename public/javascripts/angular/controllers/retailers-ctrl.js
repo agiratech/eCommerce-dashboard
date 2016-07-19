@@ -6,24 +6,49 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
     alert(response.status);
     alert(response.data);
   });
-  $scope.details = function(id) {
-    $location.path("/retailerDetails");
-    myFactory.getData("retailer/" + id).then(function(response) {
-    $scope.retailerInfo = response.data.retailer;
-    }, function(response) {
-      alert(response.status);
-      alert(response.data);
+  $scope.show = function(id) {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retailerDetails.html',
+    controller: 'GetRetailer',
+    size: 'lg',
+    resolve: {
+               param: function () {
+                   return {'retailerId' : id };
+               }
+              }
     });
   };
-  $scope.open = function () {
+  $scope.create = function () {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/retailerCreate.html',
     controller: 'CreateRetailer',
     });
-  }
+  };
+  $scope.update = function (id) {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retailerUpdate.html',
+    controller: 'UpdateRetailer',
+    resolve: {
+               param: function () {
+                   return {'retailerId' : id };
+               }
+              }
+    });
+  };
+  $scope.delete = function (id) {
+    var modalInstance = $uibModal.open({
+    templateUrl: 'templates/retailerDelete.html',
+    controller: 'DeleteRetailer',
+    resolve: {
+               param: function () {
+                   return {'retailerId' : id };
+               }
+              }
+    });
+  };
 
   $scope.gridOptions = {data: 'retailerList', columnDefs: [
-      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'crawlDays'},{name: 'crawlTime'},{name: 'active'},{name: 'Events', cellTemplate: '<div><a  ng-click="grid.appScope.details(row.entity.id)">Show</a></div>'}],
+      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'crawlDays'},{name: 'crawlTime'},{name: 'active'},{name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
   };
 });
 
@@ -36,8 +61,26 @@ app.factory('myFactory', function($http){
     factory.createData = function(url,data){
         return $http.post("http://localhost:8000/v1/" + url,data);
     };
+    factory.updateData = function(url,data){
+        return $http.put("http://localhost:8000/v1/" + url,data);
+    };
+    factory.deleteData = function(url){
+        return $http.delete("http://localhost:8000/v1/" + url);
+    };
 
     return factory;
+});
+
+app.controller('GetRetailer', function($scope,$uibModalInstance,myFactory,param) {
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  myFactory.getData("retailer/" + param.retailerId).then(function(response) {
+    $scope.retailerInfo = response.data.retailer;
+    }, function(response) {
+      alert(response.status);
+      alert(response.data);
+    });
 });
 
 app.controller('CreateRetailer', function($scope, $uibModalInstance,myFactory) {
@@ -55,15 +98,59 @@ app.controller('CreateRetailer', function($scope, $uibModalInstance,myFactory) {
     $uibModalInstance.dismiss('cancel');
   };
   $scope.createRetailer = function() {
-  var parameter = {"spiderId":parseInt($scope.retailer.spiderId,10),"name":$scope.retailer.name,"baseUrl":$scope.retailer.baseUrl,"currency":$scope.retailer.currency,"currencyFormat":$scope.retailer.currencyFormat,"active":Boolean($scope.retailer.active),"emails":$scope.retailer.emails,"shopperTypeId":parseInt($scope.retailer.shopperTypeId)};
+    var parameter = {"spiderId":parseInt($scope.retailer.spiderId,10),"name":$scope.retailer.name,"baseUrl":$scope.retailer.baseUrl,"currency":$scope.retailer.currency,"currencyFormat":$scope.retailer.currencyFormat,"active":Boolean($scope.retailer.active),"emails":$scope.retailer.emails,"shopperTypeId":parseInt($scope.retailer.shopperTypeId)};
     console.log($scope.retailer)
     console.log(parameter);
     myFactory.createData("retailer",parameter).then(function(response) {
-    $scope.Status = response.status;
-    alert($scope.Status)
+    console.log(response.data);
+    $scope.close();
+    window.location.reload();
     }, function(response) {
       alert(response.status);
-      alert(response.data);
+      console.log(response.data);
+    });
+  };
+});
+
+app.controller('UpdateRetailer', function($scope, $uibModalInstance, myFactory,param) {
+  $scope.retailer = {
+    "id":param.retailerId,
+    "spiderId":"",
+    "name":"",
+    "baseUrl":"",
+    "currency":"",
+    "currencyFormat":"",
+  };
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  $scope.updateRetailer = function() {
+    var parameter = {"spiderId":parseInt($scope.retailer.spiderId,10),"name":$scope.retailer.name,"baseUrl":$scope.retailer.baseUrl,"currency":$scope.retailer.currency,"currencyFormat":$scope.retailer.currencyFormat};
+    console.log($scope.retailer)
+    console.log(parameter);
+    myFactory.updateData("retailer/"+param.retailerId,parameter).then(function(response) {
+    console.log(response.data);
+    $scope.close();
+    window.location.reload();
+    }, function(response) {
+      alert(response.status);
+      console.log(response.data);
+    });
+  };
+});
+
+app.controller('DeleteRetailer', function($scope, $uibModalInstance, myFactory,param) {
+  $scope.retailerID = param.retailerId;
+  $scope.close = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+  $scope.deleteRetailer = function() {
+    myFactory.deleteData("retailer/"+param.retailerId).then(function(response) {
+    console.log(response.data);
+    $scope.close();
+    window.location.reload();
+    }, function(response) {
+      alert(response.status);
       console.log(response.data);
     });
   };
