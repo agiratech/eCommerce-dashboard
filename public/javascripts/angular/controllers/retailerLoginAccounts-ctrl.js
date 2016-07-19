@@ -2,10 +2,11 @@
 sample website Login Accounts controler
 **/
 
-app.controller("RetailerLoginAccounts", ['$uibModal','$location','$rootScope','$scope','$http', function ($uibModal,$location,$rootScope,$scope,$http) {
+app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http', function ($location,$uibModal,$scope,$http) {
         // $rootScope.row = "";
         // $scope.keyword = '';
-        $scope.form = [];
+        $scope.names = ["centauro","walmart","passarela","dafiti","centauro-light","marisa"];
+        // $scope.names = [{model:"centauro"},{model:"walmart"},{model:"passarala"},{model: "dafiti"},{model: "centauro-light"},{model:"marisa"}];
         $scope.GetAllData = function () {
             console.log(11111111111)
             $http.get('http://localhost:8000/v1/retailerProductConfigurationUrls/centauro')
@@ -21,11 +22,28 @@ app.controller("RetailerLoginAccounts", ['$uibModal','$location','$rootScope','$
                     "<br />config: " + jsonFilter(config);
             });
         };
-        // show the login Account detail
+        $scope.GetAllData();
+        $scope.getData = function (data) {
+            console.log(222222222222)
+            console.log(data)
+            $http.get('http://localhost:8000/v1/retailerProductConfigurationUrls/' + data)
+            .success(function (data, status, headers, config) {
+                $scope.value = data.accounts;
+                console.log($scope.value)
+            })
+            .error(function (data, status, header, config) {
+              console.log(11111111111)
+                $scope.ResponseDetails = "Data: " + data +
+                    "<br />status: " + status +
+                    "<br />headers: " + jsonFilter(header) +
+                    "<br />config: " + jsonFilter(config);
+            });
+        };
+        // show the shipping option detail
         $scope.showRow = function(show) {
           var modalInstance = $uibModal.open({
-          templateUrl: 'templates/retailerLoginAccountsShow.html',
-          controller: 'ShowShippingOption',
+          templateUrl: 'templates/retailerLoginAccountShow.html',
+          controller: 'ShowLoginAccount',
           resolve: {
              param: function(){
                 return { "show" : show };
@@ -33,110 +51,17 @@ app.controller("RetailerLoginAccounts", ['$uibModal','$location','$rootScope','$
             }
           });
           }
-        console.log($scope.GetAllData())
-        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.showRow(row.entity)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.updateRow(row.entity)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.deleteRow(row.entity)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
+
+        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.showRow(row.entity)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button> </div>'}],
         };
-      }]);
-    //   .controller('CreateLoginAccounts', function($scope, $uibModalInstance,$http) {
-    //     $scope.retailerShippingOption = {
-    //       "userName": "",
-    //       "password": ""
-    //     };
-    //     $scope.close = function () {
-    //       $uibModalInstance.dismiss('cancel');
-    //     };
-    //     $scope.CreateShippingOptionValue = function() {
-    //     var parameter = {"retailerId":parseInt($scope.retailerShippingOption.retailerId,10),"retaildashShippingOptionId":parseInt($scope.retailerShippingOption.retaildashShippingOptionId,10),"name":$scope.retailerShippingOption.name,"retailerName":$scope.retailerShippingOption.retailerName,"retaildashShippingOptionName":$scope.retailerShippingOption.retaildashShippingOptionName};
-    //       console.log($scope.retailerShippingOption)
-    //       console.log(parameter);
-    //       $http.post('http://localhost:8000/v1/' + "retailerShippingOption",parameter)
-    //           .success(function (data, status, headers, config) {
-    //               console.log($scope.data)
-    //               $uibModalInstance.dismiss('cancel');
-    //               window.location.reload()
-    //           })
-    //           .error(function (data, status, header, config) {
-    //             console.log(data)
-    //               $scope.ResponseDetails = "Data: " + data +
-    //                   "<br />status: " + status +
-    //                   "<br />headers: " + jsonFilter(header) +
-    //                   "<br />config: " + jsonFilter(config);
-    //           });
-    //       };
-    // })
-    // .controller('UpdateShippingOption', function($scope, $uibModalInstance,$http,param) {
-    //     $scope.updateValue = parseInt(param.id)
-    //     $scope.retailerShippingOption = {
-    //       "id": param.update.id,
-    //       "retailerId": param.update.retailerId,
-    //       "retaildashShippingOptionId": param.update.retaildashShippingOptionId,
-    //       "name": param.update.name,
-    //       "retailerName": param.update.retailerName,
-    //       "retaildashShippingOptionName": param.update.retaildashShippingOptionName
-    //     };
-    //     $scope.close = function () {
-    //       $uibModalInstance.dismiss('cancel');
-    //     };
-    //     $scope.UpdateShippingOptionValue = function() {
-    //     var parameter = {"retailerId":parseInt($scope.retailerShippingOption.retailerId,10),"retaildashShippingOptionId":parseInt($scope.retailerShippingOption.retaildashShippingOptionId,10),"name":$scope.retailerShippingOption.name,"retailerName":$scope.retailerShippingOption.retailerName,"retaildashShippingOptionName":$scope.retailerShippingOption.retaildashShippingOptionName};
-    //       console.log($scope.retailerShippingOption)
-    //       console.log(parameter);
-    //       $http.put('http://localhost:8000/v1/' + "retailerShippingOption/"+param.update.id,parameter)
-    //           .success(function (data, status, headers, config) {
-    //               console.log($scope.data)
-    //               $uibModalInstance.dismiss('cancel');
-    //               window.location.reload()
-    //           })
-    //           .error(function (data, status, header, config) {
-    //             console.log(data)
-    //               $scope.ResponseDetails = "Data: " + data +
-    //                   "<br />status: " + status +
-    //                   "<br />headers: " + jsonFilter(header) +
-    //                   "<br />config: " + jsonFilter(config);
-    //           });
-    //       };
-    // })
-    // .controller('ShowShippingOption', function($scope, $uibModalInstance,$http,param) {
-    //     $scope.updateValue = parseInt(param.show)
-    //     $scope.retailerShippingOption = {
-    //       "name": param.show.name,
-    //       "retailerName": param.show.retailerName,
-    //       "retaildashShippingOptionName": param.show.retaildashShippingOptionName
-    //     };
-    //     $scope.close = function () {
-    //       $uibModalInstance.dismiss('cancel');
-    //     };
-    // })
-    // .controller('DeleteShippingOption', function($scope,$templateCache, $uibModalInstance,$location,$http,param) {
-    //     $scope.updateValue = parseInt(param.id)
-    //     $scope.retailerShippingOption = {
-    //       "id": param.deleterow.id,
-    //       "retailerId": param.deleterow.retailerId,
-    //       "retaildashShippingOptionId": param.deleterow.retaildashShippingOptionId,
-    //       "name": param.deleterow.name,
-    //       "retailerName": param.deleterow.retailerName,
-    //       "retaildashShippingOptionName": param.deleterow.retaildashShippingOptionName
-    //     };
-    //     $scope.close = function () {
-    //       $uibModalInstance.dismiss('cancel');
-    //     };
-    //     $scope.DeleteShippingOptionValue = function() {
-    //     var parameter = {"id":parseInt($scope.retailerShippingOption.id,10),"retailerId":parseInt($scope.retailerShippingOption.retailerId,10),"retaildashShippingOptionId":parseInt($scope.retailerShippingOption.retaildashShippingOptionId,10),"name":$scope.retailerShippingOption.name,"retailerName":$scope.retailerShippingOption.retailerName,"retaildashShippingOptionName":$scope.retailerShippingOption.retaildashShippingOptionName};
-    //       console.log($scope.retailerShippingOption)
-    //       $http.delete('http://localhost:8000/v1/' + "retailerShippingOption/"+param.deleterow.id,parameter)
-    //           .success(function (data, status, headers, config) {
-    //               console.log($scope.data)
-    //               // $route.$location.path();
-    //               console.log($location.path()) //need to add the path of calendar page
-    //               $uibModalInstance.dismiss('cancel');
-    //               window.location.reload()
-    //           })
-    //           .error(function (data, status, header, config) {
-    //             console.log(data)
-    //               $scope.ResponseDetails = "Data: " + data +
-    //                   "<br />status: " + status +
-    //                   "<br />headers: " + jsonFilter(header) +
-    //                   "<br />config: " + jsonFilter(config);
-    //           });
-    //       };
-    // });
+      }])
+      .controller('ShowLoginAccount', function($scope, $uibModalInstance,$http,param) {
+        $scope.updateValue = parseInt(param.show)
+        $scope.retailerLoginAccount = {
+          "userName": param.show.userName,
+          "password": param.show.password,
+        };
+        $scope.close = function () {
+          $uibModalInstance.dismiss('cancel');
+        };
+      });
