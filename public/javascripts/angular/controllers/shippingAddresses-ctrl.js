@@ -49,6 +49,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
             }
           });
           }
+        // delete the row detail
         $scope.deleteRow = function(deleterow) {
           var modalInstance = $uibModal.open({
           templateUrl: 'templates/shippingAddressDelete.html',

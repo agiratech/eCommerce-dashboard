@@ -29,41 +29,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'templates/retailerShippingOptions.html',
                 controller: 'RetailerShippingOptions'
             })
-            // .state('retailerShippingOptionShow', {
-            //     url: '/retailerShippingOption/show',
-            //     templateUrl: 'templates/retailerShippingOptionShow.html',
-            //     controller: 'RetailerShippingOptions'
-            // })
-            .state('retailerShippingOptionEdit', {
-                url: '/retailerShippingOption/edit',
-                templateUrl: 'templates/retailerShippingOptionEdit.html',
-                // controller: 'RetailerShippingOptions'
-            })
-            .state('retailerShippingOptionDelete', {
-                url: '/retailerShippingOption/delete',
-                templateUrl: 'templates/retailerShippingOptionDelete.html',
-                // controller: 'RetailerShippingOptions'
+            .state('retailerLoginAccounts', {
+                url: '/retailerLoginAccounts',
+                templateUrl: 'templates/retailerLoginAccounts.html',
+                controller: 'RetailerLoginAccounts'
             })
             .state('shippingAddresses', {
                 url: '/shippingAddresses',
                 templateUrl: 'templates/shippingAddresses.html',
                 controller: 'ShippingAddresses'
-            })
-            .state('shippingAddressShow', {
-                url: '/shippingAddress/show',
-                templateUrl: 'templates/shippingAddresseShow.html',
-                controller: 'ShippingAddresses'
-            })
-            .state('shippingAddresseEdit', {
-                url: '/shippingAddresse',
-                templateUrl: 'templates/shippingAddresse.html',
-                controller: 'ShippingAddresses'
-            })
-            .state('shippingAddresseDelete', {
-                url: '/shippingAddresse/Delete',
-                templateUrl: 'templates/shippingAddresseDelete.html',
-                controller: 'ShippingAddresses'
-                // controller: 'RetailerList'
             })
             .state('retailerDetails', {
                 url: '/retailerDetails',
