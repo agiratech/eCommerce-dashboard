@@ -3,40 +3,38 @@
 <h3 class="modal-title">Enter Retailer Details</h3>
 </div>
 <div class="modal-body">
-<table style="width:100%">
-  <tr>
-    <td>Spider ID</td>
-    <td><input type="text" ng-model="retailer.spiderId"/></td>
-  </tr>
-  <tr>
-    <td>Name</td>
-    <td><input type="text" ng-model="retailer.name"/></td>
-  </tr>
-  <tr>
-    <td>Base URL</td>
-    <td><input type="text" ng-model="retailer.baseUrl"/></td>
-  </tr>
-  <tr>
-    <td>Currency</td>
-    <td><input type="text" ng-model="retailer.currency"/></td>
-  </tr>
-  <tr>
-    <td>Currency Format</td>
-    <td><input type="text" ng-model="retailer.currencyFormat"/></td>
-  </tr>
-  <tr>
-    <td>Active</td>
-    <td><input type="text" ng-model="retailer.active"/></td>
-  </tr>
-  <tr>
-    <td>E-Mails</td>
-    <td><input type="text" ng-model="retailer.emails"/></td>
-  </tr>
-  <tr>
-    <td>Shopper Type ID</td>
-    <td><input type="text" ng-model="retailer.shopperTypeId"/></td>
-  </tr>
-</table>
+  <div class="row">
+    <div class="col-md-6">Spider ID</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.spiderId"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Name</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.name"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Base Url</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.baseUrl"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Currency</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.currency"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Currency Format</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.currencyFormat"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Active</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.active"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">E-Mails</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.emails"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Shopper Type ID</div>
+    <div class="col-md-6"><input type="text" ng-model="retailer.shopperTypeId"/></div>
+  </div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-warning" type="button" ng-click="createRetailer()">Save</button>

@@ -3,37 +3,34 @@
 <h3 class="modal-title">Enter Retailer Shipping Option Details</h3>
 </div>
 <div class="modal-body">
-<table style="width:100%">
-  <tr>
-    <td>RetailerId</td>
-    <td><input type="text" ng-model="shippingAddress.retailerId"/></td>
-  </tr>
-  <tr>
-    <td>Address1</td>
-    <td><input type="text" ng-model="shippingAddress.address1"/></td>
-  </tr>
-  <tr>
-    <td>Address2</td>
-    <td><input type="text" ng-model="shippingAddress.address2"/></td>
-  </tr>
-  <tr>
-    <td>City</td>
-    <td><input type="text" ng-model="shippingAddress.city"/></td>
-  </tr>
-  <tr>
-  <tr>
-    <td>State</td>
-    <td><input type="text" ng-model="shippingAddress.state"/></td>
-  </tr>
-  <tr>
-    <td>Country</td>
-    <td><input type="text" ng-model="shippingAddress.country"/></td>
-  </tr>
-  <tr>
-    <td>ZipCode</td>
-    <td><input type="text" ng-model="shippingAddress.zipCode"/></td>
-  </tr>
-</table>
+  <div class="row">
+    <div class="col-md-6">RetailerId</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.retailerId"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Address1</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.address1"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Address2</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.address2"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">City</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.city"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">State</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.state"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Country</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.country"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">ZipCode</div>
+    <div class="col-md-6"><input type="text" ng-model="shippingAddress.zipCode"/></div>
+  </div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-warning" type="submit" ng-click="CreateShippingAddressValue()">Save</button>

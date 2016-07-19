@@ -3,20 +3,18 @@
 <h3 class="modal-title">Update Retailer Product Configuration Details</h3>
 </div>
 <div class="modal-body">
-<table style="width:100%">
-  <tr>
-    <td>Retailer Product Configuration ID</td>
-    <td><input type="text" ng-model="productConfigId" readonly/></td>
-  </tr>
-  <tr>
-    <td>Active</td>
-    <td><input type="text" ng-model="RetailerProductConfig.active"/></td>
-  </tr>
-  <tr>
-    <td>Max Number of Records</td>
-    <td><input type="text" ng-model="RetailerProductConfig.maxNumberOfRecords"/></td>
-  </tr>
-</table>
+  <div class="row">
+    <div class="col-md-6">Retailer Product Configuration ID</div>
+    <div class="col-md-6"><input type="text" ng-model="productConfigId" readonly/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Active</div>
+    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.active"/></div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">Max Number of Records</div>
+    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.maxNumberOfRecords"/></div>
+  </div>
 </div>
 <div class="modal-footer">
 <button class="btn btn-warning" type="button" ng-click="updateRetailerProductConfig()">Update</button>

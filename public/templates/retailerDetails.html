@@ -3,66 +3,60 @@
   <h3 class="modal-title">Retailer Details</h3>
 </div>
 <div class="modal-body">
-  <table style="width:100%">
-    <tr>
-      <td><b>Id</b></td>
-      <td>{{retailerInfo.id}}</td>
-    </tr>
-    <tr>
-      <td><b>Name</b></td>
-      <td>{{retailerInfo.name}}</td>
-    </tr>
-    <tr>
-      <td><b>BaseUrl</b></td>
-      <td><a href="{{retailerInfo.baseUrl}}" target="_blank">{{retailerInfo.baseUrl}}</a></td>
-    </tr>
-    <tr>
-      <td><b>Currency</b></td>
-      <td>{{retailerInfo.currency}}</td>
-    </tr>
-    <tr>
-      <td><b>Crawl Days</b></td>
-      <td>{{retailerInfo.crawlDays}}</td>
-    </tr>
-    <tr>
-      <td><b>Crawl Time</b></td>
-      <td>{{retailerInfo.crawlTime}}</td>
-    </tr>
-    <tr>
-      <td><b>Active</b></td>
-      <td>{{retailerInfo.active}}</td>
-    </tr>
-  </table>
-  <h2>Retailer Product Configuration Details</h2>
-  <table style="width:100%">
-    <tr>
-      <th>Product ID</th>
-      <th>Description</th>
-      <th>Url</th>
-      <th>Url Type</th>
-      <th>Active</th>
-    </tr>
-    <tr ng-repeat="product in retailerInfo.products">
-      <td>{{product.id}}</td>
-      <td>{{product.description}}</td>
-      <td><a href="{{product.url}}" target="_blank">{{product.url}}</a></td>
-      <td>{{product.urlType}}</td>
-      <td>{{product.active}}</td>
-    </tr>
-  </table>
-  <h2>Retailer Shipping Options</h2>
-  <table style="width:100%">
-    <tr>
-      <th>Shipping Option ID</th>
-      <th>Description</th>
-      <th>Standardized Description</th>
-      <th>Standardized Id</th>
-    </tr>
-    <tr ng-repeat="shippingOption in retailerInfo.shippingOptions">
-      <td>{{shippingOption.id}}</td>
-      <td>{{shippingOption.description}}</td>
-      <td>{{shippingOption.standardizedDescription}}</td>
-      <td>{{shippingOption.standardizedId}}</td>
-    </tr>
-  </table>
+  <div class="row">
+    <div class="col-md-4">ID</div>
+    <div class="col-md-8">{{retailerInfo.id}}</div>
   </div>
+  <div class="row">
+    <div class="col-md-4">name</div>
+    <div class="col-md-8">{{retailerInfo.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">Base Url</div>
+    <div class="col-md-8">{{retailerInfo.baseUrl}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">Currency</div>
+    <div class="col-md-8">{{retailerInfo.currency}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">Crawl Days</div>
+    <div class="col-md-8">{{retailerInfo.crawlDays}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">Crawl Time</div>
+    <div class="col-md-8">{{retailerInfo.crawlTime}}</div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">Active</div>
+    <div class="col-md-8">{{retailerInfo.active}}</div>
+  </div>
+  <h3 class="modal-title">Retailer Product Configuration Details</h3>
+  <dir class="row">
+    <div class="col-md-1">Product ID</div>
+    <div class="col-md-2">Description</div>
+    <div class="col-md-6">Url</div>
+    <div class="col-md-2">Url Type</div>
+    <div class="col-md-1">Active</div>
+  </dir>
+  <div class="row" ng-repeat="productConfig in retailerInfo.products">
+    <div class="col-md-1">{{productConfig.id}}</div>
+    <div class="col-md-2">{{productConfig.description}}</div>
+    <div class="col-md-6">{{productConfig.url}}</div>
+    <div class="col-md-2">{{productConfig.urlType}}</div>
+    <div class="col-md-1">{{productConfig.active}}</div>
+  </div>
+  <h3 class="modal-title">Retailer Shipping Options</h3>
+  <div class="row">
+    <div class="col-md-3">Shipping Option ID</div>
+    <div class="col-md-3">Description</div>
+    <div class="col-md-3">Standardized Description</div>
+    <div class="col-md-3">Standardized Id</div>
+  </div>
+  <div class="row" ng-repeat="retailerShippingOption in retailerInfo.shippingOptions">
+  <div class="col-md-3">{{retailerShippingOption.id}}</div>
+    <div class="col-md-3">{{retailerShippingOption.description}}</div>
+    <div class="col-md-3">{{retailerShippingOption.standardizedDescription}}</div>
+    <div class="col-md-3">{{retailerShippingOption.standardizedId}}</div>
+  </div>
+</div>
