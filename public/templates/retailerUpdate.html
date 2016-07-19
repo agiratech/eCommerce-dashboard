@@ -1,0 +1,35 @@
+<div class="modal-header">
+<button type="button" class="close" ng-click="close()">&times;</button>
+<h3 class="modal-title">Update Retailer Details</h3>
+</div>
+<div class="modal-body">
+<table style="width:100%">
+  <tr>
+    <td>Retailer ID</td>
+    <td><input type="text" ng-model="retailer.id" readonly/></td>
+  </tr>
+  <tr>
+    <td>Spider ID</td>
+    <td><input type="text" ng-model="retailer.spiderId"/></td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><input type="text" ng-model="retailer.name"/></td>
+  </tr>
+  <tr>
+    <td>Base URL</td>
+    <td><input type="text" ng-model="retailer.baseUrl"/></td>
+  </tr>
+  <tr>
+    <td>Currency</td>
+    <td><input type="text" ng-model="retailer.currency"/></td>
+  </tr>
+  <tr>
+    <td>Currency Format</td>
+    <td><input type="text" ng-model="retailer.currencyFormat"/></td>
+  </tr>
+</table>
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" type="button" ng-click="updateRetailer()">Update</button>
+</div>

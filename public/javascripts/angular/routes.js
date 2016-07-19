@@ -39,15 +39,25 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 templateUrl: 'templates/shippingAddresses.html',
                 controller: 'ShippingAddresses'
             })
-            .state('retailerDetails', {
-                url: '/retailerDetails',
-                templateUrl: 'templates/retailerDetails.html',
-                // controller: 'RetailerList'
-            })
             .state('retaildashShippingOptions', {
                 url: '/retaildashShippingOptions',
                 templateUrl: 'templates/retaildashShippingOptions.html',
-                // controller: 'RetaildashShippingOptionList'
+                controller: 'RetaildashShippingOptionList'
+            })
+            .state('retailerProductConfigurations', {
+                url: '/retailerProductConfigurations',
+                templateUrl: 'templates/retailerProductConfigurations.html',
+                controller: 'RetailerProductConfigurationList'
+            })
+            .state('crawlFrequencyConfigurations', {
+                url: '/crawlFrequencyConfigurations',
+                templateUrl: 'templates/crawlFrequencyConfigurations.html',
+                controller: 'CrawlFrequencyConfigurationList'
+            })
+            .state('products', {
+                url: '/products',
+                templateUrl: 'templates/products.html',
+                controller: 'ProductList'
             });
     }
 ]);

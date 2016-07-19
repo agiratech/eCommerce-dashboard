@@ -1,0 +1,39 @@
+<div class="modal-header">
+<button type="button" class="close" ng-click="close()">&times;</button>
+<h3 class="modal-title">Enter Retailer Product Configuration Details</h3>
+</div>
+<div class="modal-body">
+<table style="width:100%">
+  <tr>
+    <td>Retailer ID</td>
+    <td><input type="text" ng-model="RetailerProductConfig.retailerId"/></td>
+  </tr>
+  <tr>
+    <td>Url</td>
+    <td><input type="text" ng-model="RetailerProductConfig.url"/></td>
+  </tr>
+  <tr>
+    <td>Url Type</td>
+    <td><input type="text" ng-model="RetailerProductConfig.urlType"/></td>
+  </tr>
+  <tr>
+    <td>Keyword</td>
+    <td><input type="text" ng-model="RetailerProductConfig.keyword"/></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><input type="text" ng-model="RetailerProductConfig.description"/></td>
+  </tr>
+  <tr>
+    <td>Active</td>
+    <td><input type="text" ng-model="RetailerProductConfig.active"/></td>
+  </tr>
+  <tr>
+    <td>Max Number of Records</td>
+    <td><input type="text" ng-model="RetailerProductConfig.maxNumberOfRecords"/></td>
+  </tr>
+</table>
+</div>
+<div class="modal-footer">
+<button class="btn btn-warning" type="button" ng-click="createRetailerProductConfig()">Save</button>
+</div>

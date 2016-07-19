@@ -8,9 +8,7 @@
       <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
         <% include partials/sidebar %> <!-- Sidebar -->
         <div id="content-wrapper">
-          <div class="page-content" ng-controller="RetailerList">
-            <!-- <div class="page-content" ng-controller = "RetailerShippingOptions"> -->
-              <!-- <div class="page-content" ng-controller = "ShippingAddresses"> -->
+          <div class="page-content">
             <% include partials/headerbar %> <!-- Header Bar -->
             <div ui-view>
               <%- body %>
