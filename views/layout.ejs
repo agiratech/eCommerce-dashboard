@@ -3,23 +3,24 @@
   <head>
     <% include partials/header %> <!-- Header -->
   </head>
-  <body >
-    <div ng-controller="MasterCtrl">
-      <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
-        <% include partials/sidebar %> <!-- Sidebar -->
-        <div id="content-wrapper">
-          <div class="page-content" ng-controller="RetailerList">
-            <!-- <div class="page-content" ng-controller = "RetailerShippingOptions"> -->
-              <!-- <div class="page-content" ng-controller = "ShippingAddresses"> -->
-            <% include partials/headerbar %> <!-- Header Bar -->
-            <div ui-view>
-              <%- body %>
-            <!-- </div> Main Content -->
-            <!-- </div> Main Content -->
-            </div> <!-- Main Content -->
-          </div><!-- End Page Content -->
-        </div><!-- End Content Wrapper -->
-      </div><!-- End Page Wrapper -->
+  <body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+      <% include partials/headerbar %> <!-- Header -->
+      <% include partials/sidebar %> <!-- Header -->
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <div ui-view>
+          <%- body %>
+        </div>
+      </div>
+      <!-- /.content-wrapper -->
+
+      <% include partials/footer %> <!-- Footer -->
+
+      <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+      <div class="control-sidebar-bg"></div>
     </div>
+
   </body>
 </html>
