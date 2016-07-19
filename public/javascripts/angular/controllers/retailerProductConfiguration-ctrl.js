@@ -23,19 +23,19 @@ app.controller("RetailerProductConfigurationList", function($uibModal,$scope,myF
     controller: 'CreateRetailerProductConfig',
     });
   };
-  $scope.update = function (id) {
+  $scope.update = function (data) {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/retailerProductConfigurationUpdate.html',
     controller: 'UpdateRetailerProductConfig',
     resolve: {
                param: function () {
-                   return {'retailerProductConfigId' : id };
+                   return {'retailerProductConfigInfo' : data };
                }
               }
     });
   };
   $scope.gridOptionForRetailerProductConfig = {data: 'retailerProductConfigurationList', columnDefs: [
-      { name: 'url'},{ name: 'urlType'},{ name: 'retailerName'},{ name: 'active'},{name: 'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button> <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> </div>'}],
+      { name: 'url'},{ name: 'urlType'},{ name: 'retailerName'},{ name: 'active'},{name: 'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button> <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity)"> <i class="fa fa-edit"></i> </button> </div>'}],
   };
 });
 
@@ -78,17 +78,17 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
 });
 
 app.controller('UpdateRetailerProductConfig', function($scope, $uibModalInstance, myFactory,param) {
-  $scope.productConfigId = param.retailerProductConfigId;
   $scope.RetailerProductConfig = {
-    "active":"",
-    "maxNumberOfRecords":""
+    "id":param.retailerProductConfigInfo.id,
+    "active":param.retailerProductConfigInfo.active,
+    "maxNumberOfRecords":param.retailerProductConfigInfo.maxNumberOfRecords
   }
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
   $scope.updateRetailerProductConfig = function() {
     var parameter = {"active":Boolean($scope.RetailerProductConfig.active),"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
-    myFactory.updateData("retailerProductConfiguration/"+param.retailerProductConfigId,parameter).then(function(response) {
+    myFactory.updateData("retailerProductConfiguration/"+param.retailerProductConfigInfo.id,parameter).then(function(response) {
       console.log($scope.RetailerProductConfig.active)
       console.log(parameter)
     console.log(response.data);

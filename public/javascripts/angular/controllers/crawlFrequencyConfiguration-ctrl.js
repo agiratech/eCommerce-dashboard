@@ -11,19 +11,19 @@ app.controller('CrawlFrequencyConfigurationList', function($uibModal,$scope,myFa
     controller: 'CreateCrawlFrequencyConfig',
     });
   };
-  $scope.update = function (id) {
+  $scope.update = function (data) {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/crawlFrequencyConfigurationUpdate.html',
     controller: 'UpdateCrawlFrequencyConfig',
     resolve: {
                param: function () {
-                   return {'crawlFrequencyConfigId' : id };
+                   return {'crawlFrequencyConfigInfo' : data };
                }
               }
     });
   };
   $scope.gridOptionForCrawlFreqConfig = {data: 'crawlFrequencyConfigList', columnDefs: [
-      { name: 'name'},{ name: 'month'},{ name: 'day'},{ name: 'dayOfMonth'},{ name: 'hour'},{ name: 'minutes'},{ name: 'disabled'},{ name: 'priority'},{ name: 'jobKey'},{name: 'Events', cellTemplate: '<div> <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> </div>'}],
+      { name: 'name'},{ name: 'month'},{ name: 'day'},{ name: 'dayOfMonth'},{ name: 'hour'},{ name: 'minutes'},{ name: 'disabled'},{ name: 'priority'},{ name: 'jobKey'},{name: 'Events', cellTemplate: '<div> <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity)"> <i class="fa fa-edit"></i> </button> </div>'}],
   };
 });
 

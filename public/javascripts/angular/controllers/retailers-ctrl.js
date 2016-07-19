@@ -24,13 +24,13 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
     controller: 'CreateRetailer',
     });
   };
-  $scope.update = function (id) {
+  $scope.update = function (data) {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/retailerUpdate.html',
     controller: 'UpdateRetailer',
     resolve: {
                param: function () {
-                   return {'retailerId' : id };
+                   return {'retailerInfo' : data };
                }
               }
     });
@@ -48,7 +48,7 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
   };
 
   $scope.gridOptions = {data: 'retailerList', columnDefs: [
-      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'crawlDays'},{name: 'crawlTime'},{name: 'active'},{name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
+      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'crawlDays'},{name: 'crawlTime'},{name: 'active'},{name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
   };
 });
 
@@ -106,7 +106,6 @@ app.controller('CreateRetailer', function($scope, $uibModalInstance,myFactory) {
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };
@@ -114,12 +113,12 @@ app.controller('CreateRetailer', function($scope, $uibModalInstance,myFactory) {
 
 app.controller('UpdateRetailer', function($scope, $uibModalInstance, myFactory,param) {
   $scope.retailer = {
-    "id":param.retailerId,
-    "spiderId":"",
-    "name":"",
-    "baseUrl":"",
-    "currency":"",
-    "currencyFormat":"",
+    "id":param.retailerInfo.id,
+    "spiderId":param.retailerInfo.spiderId,
+    "name":param.retailerInfo.name,
+    "baseUrl":param.retailerInfo.baseUrl,
+    "currency":param.retailerInfo.currency,
+    "currencyFormat":param.retailerInfo.currencyFormat,
   };
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
@@ -128,12 +127,11 @@ app.controller('UpdateRetailer', function($scope, $uibModalInstance, myFactory,p
     var parameter = {"spiderId":parseInt($scope.retailer.spiderId,10),"name":$scope.retailer.name,"baseUrl":$scope.retailer.baseUrl,"currency":$scope.retailer.currency,"currencyFormat":$scope.retailer.currencyFormat};
     console.log($scope.retailer)
     console.log(parameter);
-    myFactory.updateData("retailer/"+param.retailerId,parameter).then(function(response) {
+    myFactory.updateData("retailer/"+param.retailerInfo.id,parameter).then(function(response) {
     console.log(response.data);
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };
@@ -150,7 +148,6 @@ app.controller('DeleteRetailer', function($scope, $uibModalInstance, myFactory,p
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };

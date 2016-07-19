@@ -11,13 +11,13 @@ app.controller("RetaildashShippingOptionList", function($uibModal,$scope,myFacto
     controller: 'CreateRetaildashShippingOption',
     });
   };
-  $scope.update = function (id) {
+  $scope.update = function (data) {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/retaildashShippingOptionUpdate.html',
     controller: 'UpdateRetaildashShippingOption',
     resolve: {
                param: function () {
-                   return {'retaildashShippingOptionId' : id };
+                   return {'retaildashShippingOptionInfo' : data };
                }
               }
     });
@@ -34,7 +34,7 @@ app.controller("RetaildashShippingOptionList", function($uibModal,$scope,myFacto
     });
   };
   $scope.gridOptionsForRetaildash = {data: 'retaildashShippingOptionList', columnDefs: [
-      { name: 'name'},{name: 'Events', cellTemplate: '<div><button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity.id)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
+      { name: 'name'},{name: 'Events', cellTemplate: '<div><button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
   };
 });
 
@@ -52,15 +52,14 @@ app.controller('CreateRetaildashShippingOption', function($scope, $uibModalInsta
     window.location.reload();
     $scope.close();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };
 });
 
 app.controller('UpdateRetaildashShippingOption', function($scope, $uibModalInstance, myFactory,param) {
-  $scope.retaildashShippingOptionName = "";
-  $scope.retaildashShippingOptionId = param.retaildashShippingOptionId;
+  $scope.retaildashShippingOptionName = param.retaildashShippingOptionInfo.name;
+  $scope.retaildashShippingOptionId = param.retaildashShippingOptionInfo.id;
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
@@ -68,12 +67,11 @@ app.controller('UpdateRetaildashShippingOption', function($scope, $uibModalInsta
     var parameter = {"name":$scope.retaildashShippingOptionName};
     console.log($scope.retaildashShippingOptionName)
     console.log(parameter);
-    myFactory.updateData("retaildashShippingOption/"+param.retaildashShippingOptionId,parameter).then(function(response) {
+    myFactory.updateData("retaildashShippingOption/"+param.retaildashShippingOptionInfo.id,parameter).then(function(response) {
     console.log(response.data);
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };
@@ -90,7 +88,6 @@ app.controller('DeleteRetaildashShippingOption', function($scope, $uibModalInsta
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
     });
   };
