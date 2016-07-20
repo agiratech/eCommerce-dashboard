@@ -2,8 +2,7 @@ app.controller("RetaildashShippingOptionList", function($uibModal,$scope,myFacto
   myFactory.getData("retaildashShippingOptions").then(function(response) {
     $scope.retaildashShippingOptionList = response.data.retaildashShippingOptions;
   }, function(response) {
-    alert(response.status);
-    alert(response.data);
+    $scope.Response = response.data.description;
   });
   $scope.create = function () {
     var modalInstance = $uibModal.open({
@@ -53,6 +52,7 @@ app.controller('CreateRetaildashShippingOption', function($scope, $uibModalInsta
     $scope.close();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });
@@ -73,6 +73,7 @@ app.controller('UpdateRetaildashShippingOption', function($scope, $uibModalInsta
     window.location.reload();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });
@@ -89,6 +90,7 @@ app.controller('DeleteRetaildashShippingOption', function($scope, $uibModalInsta
     window.location.reload();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });

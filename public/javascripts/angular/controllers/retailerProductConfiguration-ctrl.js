@@ -2,8 +2,7 @@ app.controller("RetailerProductConfigurationList", function($uibModal,$scope,myF
   myFactory.getData("retailerProductConfigurations").then(function(response) {
     $scope.retailerProductConfigurationList = response.data.retailerProductConfigurations;
   }, function(response) {
-    alert(response.status);
-    alert(response.data);
+    $scope.Response = response.data.description;
   });
   $scope.show = function(id) {
     var modalInstance = $uibModal.open({
@@ -46,8 +45,7 @@ app.controller('GetRetailerProductConfig', function($scope,$uibModalInstance,myF
   myFactory.getData("retailerProductConfiguration/" + param.retailerProductConfigId).then(function(response) {
     $scope.retailerProductConfigInfo = response.data.retailerProductConfiguration;
     }, function(response) {
-      alert(response.status);
-      alert(response.data);
+      $scope.Response = response.data.description;
     });
 });
 
@@ -71,8 +69,8 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
     $scope.close();
     window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });
@@ -95,8 +93,8 @@ app.controller('UpdateRetailerProductConfig', function($scope, $uibModalInstance
     // $scope.close();
     // window.location.reload();
     }, function(response) {
-      alert(response.status);
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });

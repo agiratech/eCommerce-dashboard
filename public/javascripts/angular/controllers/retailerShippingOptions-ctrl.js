@@ -80,8 +80,6 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
           $scope.retailerList = response.data.retailers;
           console.log($scope.retailerList)
         }, function(response) {
-          alert(response.status);
-          alert(response.data);
         });
 
         $scope.retailerData = function(id) {
@@ -90,8 +88,6 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
 
           console.log($scope.retailerShippingDetail)
           }, function(response) {
-            alert(response.status);
-            alert(response.data);
           });
         };
 

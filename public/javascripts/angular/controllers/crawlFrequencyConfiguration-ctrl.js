@@ -2,8 +2,6 @@ app.controller('CrawlFrequencyConfigurationList', function($uibModal,$scope,myFa
   myFactory.getData("crawlFrequencyConfigurations").then(function(response) {
     $scope.crawlFrequencyConfigList = response.data.crawlFrequencyConfigurationList;
   }, function(response) {
-    alert(response.status);
-    alert(response.data);
   });
   $scope.create = function () {
     var modalInstance = $uibModal.open({

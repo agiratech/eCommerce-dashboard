@@ -3,8 +3,7 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
   myFactory.getData("retailers").then(function(response) {
     $scope.retailerList = response.data.retailers;
   }, function(response) {
-    alert(response.status);
-    alert(response.data);
+    $scope.Response = response.data.description;
   });
   $scope.show = function(id) {
     $location.path('/retailerDetails/'+id);
@@ -39,7 +38,7 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
   };
 
   $scope.gridOptions = {data: 'retailerList', columnDefs: [
-      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'crawlDays'},{name: 'crawlTime'},{name: 'active'},{name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.show(row.entity.id)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.update(row.entity)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.delete(row.entity.id)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
+      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'active'},{name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity.id)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
   };
 });
 
@@ -69,8 +68,7 @@ app.controller('GetRetailer', function($scope,myFactory,$stateParams) {
   myFactory.getData("retailer/" + $stateParams.id).then(function(response) {
     $scope.retailerInfo = response.data.retailer;
     }, function(response) {
-      alert(response.status);
-      alert(response.data);
+      $scope.Response = response.data.description;
     });
 });
 
@@ -98,6 +96,7 @@ app.controller('CreateRetailer', function($scope, $uibModalInstance,myFactory) {
     window.location.reload();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });
@@ -124,6 +123,7 @@ app.controller('UpdateRetailer', function($scope, $uibModalInstance, myFactory,p
     window.location.reload();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });
@@ -140,6 +140,7 @@ app.controller('DeleteRetailer', function($scope, $uibModalInstance, myFactory,p
     window.location.reload();
     }, function(response) {
       console.log(response.data);
+      $scope.Response = response.data.description;
     });
   };
 });

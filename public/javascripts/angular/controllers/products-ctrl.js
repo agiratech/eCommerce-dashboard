@@ -3,8 +3,6 @@ app.controller('ProductList', function($uibModal,$scope,myFactory,$location) {
   $scope.index= 1;
     $scope.productList = response.data.products;
   }, function(response) {
-    alert(response.status);
-    alert(response.data);
   });
   $scope.next = function() {
     var size = ++$scope.index;
@@ -12,8 +10,6 @@ app.controller('ProductList', function($uibModal,$scope,myFactory,$location) {
     myFactory.getData("products?page="+size).then(function(response) {
       $scope.productList = response.data.products;
     }, function(response) {
-      alert(response.status);
-      alert(response.data);
     });
   };
   $scope.previous = function() {
@@ -22,8 +18,6 @@ app.controller('ProductList', function($uibModal,$scope,myFactory,$location) {
       myFactory.getData("products?page="+size).then(function(response) {
         $scope.productList = response.data.products;
       }, function(response) {
-        alert(response.status);
-        alert(response.data);
       });
     }
   }
