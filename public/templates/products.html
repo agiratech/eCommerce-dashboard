@@ -1,3 +1,140 @@
-<div>
-  <div class="grid" ui-grid="gridOptionForProducts"></div>
+<div class="modal-header">
+  <h3 class="modal-title">Products</h3>
+</div>
+<div class="model-body">
+  <div class="panel-group">
+    <div class="panel panel-info" ng-repeat="product in productList">
+      <div class="panel-heading">Item {{$index+1}}</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">Retailer Product Configuration Id</div>
+          <div class="col-md-8">{{product.retailerProductConfigurationId}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Date</div>
+          <div class="col-md-8">{{product.date}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Day of Week</div>
+          <div class="col-md-8">{{product.dayOfTheWeek}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Retailer Id</div>
+          <div class="col-md-8">{{product.retailerId}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Retailer Name</div>
+          <div class="col-md-8">{{product.retailerName}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Brand</div>
+          <div class="col-md-8">{{product.brand}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Category</div>
+          <div class="col-md-8">{{product.category}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Model Number</div>
+          <div class="col-md-8">{{product.modelNumber}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Product Code</div>
+          <div class="col-md-8">{{product.productCode}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Sku Code</div>
+          <div class="col-md-8">{{product.skuCode}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Product Name</div>
+          <div class="col-md-8">{{product.productName}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Product Description</div>
+          <div class="col-md-8">{{product.productDescription}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Barcode</div>
+          <div class="col-md-8">{{product.barcode}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Color</div>
+          <div class="col-md-8">{{product.color}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Status</div>
+          <div class="col-md-8">{{product.status}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Size</div>
+          <div class="col-md-8">{{product.size}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Gender</div>
+          <div class="col-md-8">{{product.gender}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">No. of Gears</div>
+          <div class="col-md-8">{{product.noOfGears}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Suspension</div>
+          <div class="col-md-8">{{product.suspension}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Image Url Thumbnail</div>
+          <div class="col-md-8">{{product.imageUrlThumbnail}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Image Url Preview</div>
+          <div class="col-md-8">{{product.imageUrlPreview}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shopper Type</div>
+          <div class="col-md-8">{{product.shopperType}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Currency</div>
+          <div class="col-md-8">{{product.currency}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Original Price</div>
+          <div class="col-md-8">{{product.originalPrice}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Sale Price</div>
+          <div class="col-md-8">{{product.salePrice}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping Zipcode</div>
+          <div class="col-md-8">{{product.shippingZipcode}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping City</div>
+          <div class="col-md-8">{{product.shippingCity}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping Country</div>
+          <div class="col-md-8">{{product.shippingCountry}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping Option</div>
+          <div class="col-md-8">{{product.shippingOption}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping Option Standardized</div>
+          <div class="col-md-8">{{product.shippingOptionStandardized}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping Fee</div>
+          <div class="col-md-8">{{product.shippingFee}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Shipping ETA</div>
+          <div class="col-md-8">{{product.shippingETA}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

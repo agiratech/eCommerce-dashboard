@@ -58,6 +58,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/products',
                 templateUrl: 'templates/products.html',
                 controller: 'ProductList'
+            })
+            .state('retailerDetails', {
+                url: '/retailerDetails/:id',
+                templateUrl: 'templates/retailerDetails.html',
+                controller: 'GetRetailer'
+            })
+            .state('productDetails', {
+                url: '/productDetails/:data',
+                templateUrl: 'templates/productDetails.html',
+                controller: 'ProductDetails'
             });
     }
 ]);

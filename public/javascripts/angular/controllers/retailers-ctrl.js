@@ -7,16 +7,7 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
     alert(response.data);
   });
   $scope.show = function(id) {
-    var modalInstance = $uibModal.open({
-    templateUrl: 'templates/retailerDetails.html',
-    controller: 'GetRetailer',
-    size: 'lg',
-    resolve: {
-               param: function () {
-                   return {'retailerId' : id };
-               }
-              }
-    });
+    $location.path('/retailerDetails/'+id);
   };
   $scope.create = function () {
     var modalInstance = $uibModal.open({
@@ -71,11 +62,11 @@ app.factory('myFactory', function($http){
     return factory;
 });
 
-app.controller('GetRetailer', function($scope,$uibModalInstance,myFactory,param) {
+app.controller('GetRetailer', function($scope,myFactory,$stateParams) {
   $scope.close = function () {
-    $uibModalInstance.dismiss('cancel');
+    window.history.back();
   };
-  myFactory.getData("retailer/" + param.retailerId).then(function(response) {
+  myFactory.getData("retailer/" + $stateParams.id).then(function(response) {
     $scope.retailerInfo = response.data.retailer;
     }, function(response) {
       alert(response.status);

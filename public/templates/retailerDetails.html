@@ -9,11 +9,7 @@
   </div>
   <div class="row">
     <div class="col-md-4">name</div>
-    <div class="col-md-8">{{retailerInfo.name}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">Base Url</div>
-    <div class="col-md-8">{{retailerInfo.baseUrl}}</div>
+    <div class="col-md-8"><a href="{{retailerInfo.baseUrl}}" target="_blank">{{retailerInfo.name}}</a></div>
   </div>
   <div class="row">
     <div class="col-md-4">Currency</div>
@@ -31,21 +27,6 @@
     <div class="col-md-4">Active</div>
     <div class="col-md-8">{{retailerInfo.active}}</div>
   </div>
-  <h3 class="modal-title">Retailer Product Configuration Details</h3>
-  <dir class="row">
-    <div class="col-md-1">Product ID</div>
-    <div class="col-md-2">Description</div>
-    <div class="col-md-6">Url</div>
-    <div class="col-md-2">Url Type</div>
-    <div class="col-md-1">Active</div>
-  </dir>
-  <div class="row" ng-repeat="productConfig in retailerInfo.products">
-    <div class="col-md-1">{{productConfig.id}}</div>
-    <div class="col-md-2">{{productConfig.description}}</div>
-    <div class="col-md-6">{{productConfig.url}}</div>
-    <div class="col-md-2">{{productConfig.urlType}}</div>
-    <div class="col-md-1">{{productConfig.active}}</div>
-  </div>
   <h3 class="modal-title">Retailer Shipping Options</h3>
   <div class="row">
     <div class="col-md-3">Shipping Option ID</div>
@@ -54,9 +35,38 @@
     <div class="col-md-3">Standardized Id</div>
   </div>
   <div class="row" ng-repeat="retailerShippingOption in retailerInfo.shippingOptions">
-  <div class="col-md-3">{{retailerShippingOption.id}}</div>
+    <div class="col-md-3">{{retailerShippingOption.id}}</div>
     <div class="col-md-3">{{retailerShippingOption.description}}</div>
     <div class="col-md-3">{{retailerShippingOption.standardizedDescription}}</div>
     <div class="col-md-3">{{retailerShippingOption.standardizedId}}</div>
+  </div>
+  <h3 class="modal-title">Retailer Product Configuration Details</h3>
+  <br/>
+  <div class="panel-group">
+    <div class="panel panel-info" ng-repeat="productConfig in retailerInfo.products">
+      <div class="panel-heading">Item {{$index+1}}</div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">Product ID</div>
+          <div class="col-md-8">{{productConfig.id}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Description</div>
+          <div class="col-md-8">{{productConfig.description}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Url</div>
+          <div class="col-md-8">{{productConfig.url}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Url Type</div>
+          <div class="col-md-8">{{productConfig.urlType}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Active</div>
+          <div class="col-md-8">{{productConfig.active}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
