@@ -11,16 +11,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
         // Application routes
         $stateProvider
-            .state('index', {
-                url: '/',
-                templateUrl: 'templates/dashboard.html'
-            })
-            .state('tables', {
-                url: '/tables',
-                templateUrl: 'templates/tables.html'
-            })
             .state('retailers', {
-                url: '/retailers',
+                url: '/',
                 templateUrl: 'templates/retailers.html',
                 controller: 'RetailerList'
             })
