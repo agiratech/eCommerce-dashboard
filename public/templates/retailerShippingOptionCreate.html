@@ -4,24 +4,24 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-6">RetailerId</div>
-    <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.retailerId"/></div>
+    <div class="col-md-6">RetailerName</div>
+    <div class="col-md-6">
+      <select ng-model="retailerShippingOption.retailerId" ng-change ="retailerData(retailerShippingOption.retailerId)" class="form-control">
+        <option ng-repeat="x in retailerList" value = "{{x.id}}" >{{x.name}}</option>
+      </select>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-6">RetaildashShippingOptionId</div>
-    <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.retaildashShippingOptionId"/></div>
+    <div class="col-md-6">RetaildashShippingOptionName</div>
+    <div class="col-md-6">
+      <select ng-model="retailerShippingOption.retaildashShippingOptionId" class="form-control">
+        <option ng-repeat="x in retailerShippingDetail" value="{{x.standardizedId}}">{{x.standardizedDescription}}</option>
+      </select>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-6">Name</div>
     <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.name"/></div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">RetailerName</div>
-    <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.retailerName"/></div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">RetaildashShippingOptionName</div>
-    <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.retaildashShippingOptionName"/></div>
   </div>
 </div>
 <div class="modal-footer">
