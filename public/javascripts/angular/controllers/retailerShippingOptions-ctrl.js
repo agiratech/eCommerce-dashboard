@@ -92,11 +92,8 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
-              });
+                $scope.Response = data.description;
+          });
           };
     })
     .controller('UpdateShippingOption', function($scope, $uibModalInstance,$http,param) {
@@ -124,10 +121,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
+                $scope.Response = data.description;
               });
           };
     })
@@ -168,10 +162,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
+                $scope.Response = data.description;
               });
           };
     });
