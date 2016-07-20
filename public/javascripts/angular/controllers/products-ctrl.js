@@ -1,13 +1,14 @@
 app.controller('ProductList', function($uibModal,$scope,myFactory,$location) {
-  $scope.index= 1;
   myFactory.getData("products").then(function(response) {
+  $scope.index= 1;
     $scope.productList = response.data.products;
   }, function(response) {
     alert(response.status);
     alert(response.data);
   });
   $scope.next = function() {
-    var size = $scope.index+1;
+    var size = ++$scope.index;
+    console.log(size)
     myFactory.getData("products?page="+size).then(function(response) {
       $scope.productList = response.data.products;
     }, function(response) {
@@ -16,8 +17,8 @@ app.controller('ProductList', function($uibModal,$scope,myFactory,$location) {
     });
   };
   $scope.previous = function() {
-    if($scope.index >= 1) {
-      var size = $scope.index-1;
+    if($scope.index > 1) {
+      var size = --$scope.index;
       myFactory.getData("products?page="+size).then(function(response) {
         $scope.productList = response.data.products;
       }, function(response) {
