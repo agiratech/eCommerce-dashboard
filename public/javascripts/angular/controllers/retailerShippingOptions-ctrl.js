@@ -1,11 +1,9 @@
 /**
 sample RetailerShippingOptions controler
 **/
-
 app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope','$scope','$http', function ($uibModal,$location,$rootScope,$scope,$http) {
         // $rootScope.row = "";
         // $scope.keyword = '';
-        $scope.form = [];
         $scope.GetAllData = function () {
             console.log(11111111111)
             $http.get('http://localhost:8000/v1/retailerShippingOptions')
@@ -21,6 +19,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
                     "<br />config: " + jsonFilter(config);
             });
         };
+        $scope.GetAllData()
         // show the shipping option detail
         $scope.showRow = function(show) {
           var modalInstance = $uibModal.open({
@@ -65,11 +64,11 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
             }
           });
           }
-        console.log($scope.GetAllData())
+        // console.log($scope.GetAllData())
         $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'name'},{name: 'retailerName'}, {name: 'retaildashShippingOptionName'}, {name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.showRow(row.entity)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button>  <button type="button" class="btn btn-xs btn-primary" ng-click="grid.appScope.updateRow(row.entity)"> <i class="fa fa-edit"></i> </button> <button value="remove" class = "btn btn-xs btn-primary" ng-click="grid.appScope.deleteRow(row.entity)"><i class="fa fa-times" aria-hidden="true"></i></button></div>'}],
         };
       }])
-      .controller('CreateShippingOption', function($scope, $uibModalInstance,$http) {
+      .controller('CreateShippingOption', function($scope, $uibModalInstance,$http,myFactory) {
         $scope.retailerShippingOption = {
           "retailerId": "",
           "retaildashShippingOptionId": "",
@@ -77,9 +76,30 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
           "retailerName": "",
           "retaildashShippingOptionName": ""
         };
+        myFactory.getData("retailers").then(function(response) {
+          $scope.retailerList = response.data.retailers;
+          console.log($scope.retailerList)
+        }, function(response) {
+          alert(response.status);
+          alert(response.data);
+        });
+
+        $scope.retailerData = function(id) {
+        myFactory.getData("retailer/" + id).then(function(response) {
+          $scope.retailerShippingDetail = response.data.retailer.shippingOptions
+
+          console.log($scope.retailerShippingDetail)
+          }, function(response) {
+            alert(response.status);
+            alert(response.data);
+          });
+        };
+
         $scope.close = function () {
           $uibModalInstance.dismiss('cancel');
         };
+
+
         $scope.CreateShippingOptionValue = function() {
         var parameter = {"retailerId":parseInt($scope.retailerShippingOption.retailerId,10),"retaildashShippingOptionId":parseInt($scope.retailerShippingOption.retaildashShippingOptionId,10),"name":$scope.retailerShippingOption.name,"retailerName":$scope.retailerShippingOption.retailerName,"retaildashShippingOptionName":$scope.retailerShippingOption.retaildashShippingOptionName};
           console.log($scope.retailerShippingOption)
@@ -96,7 +116,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
           });
           };
     })
-    .controller('UpdateShippingOption', function($scope, $uibModalInstance,$http,param) {
+    .controller('UpdateShippingOption', function($scope, $uibModalInstance,$http,param,myFactory) {
         $scope.updateValue = parseInt(param.id)
         $scope.retailerShippingOption = {
           "id": param.update.id,
@@ -109,6 +129,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
         $scope.close = function () {
           $uibModalInstance.dismiss('cancel');
         };
+
         $scope.UpdateShippingOptionValue = function() {
         var parameter = {"retailerId":parseInt($scope.retailerShippingOption.retailerId,10),"retaildashShippingOptionId":parseInt($scope.retailerShippingOption.retaildashShippingOptionId,10),"name":$scope.retailerShippingOption.name,"retailerName":$scope.retailerShippingOption.retailerName,"retaildashShippingOptionName":$scope.retailerShippingOption.retaildashShippingOptionName};
           console.log($scope.retailerShippingOption)
