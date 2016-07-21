@@ -80,8 +80,6 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
           $scope.retailerList = response.data.retailers;
           console.log($scope.retailerList)
         }, function(response) {
-          alert(response.status);
-          alert(response.data);
         });
 
         $scope.retailerData = function(id) {
@@ -90,8 +88,6 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
 
           console.log($scope.retailerShippingDetail)
           }, function(response) {
-            alert(response.status);
-            alert(response.data);
           });
         };
 
@@ -112,11 +108,8 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
-              });
+                $scope.Response = data.description;
+          });
           };
     })
     .controller('UpdateShippingOption', function($scope, $uibModalInstance,$http,param,myFactory) {
@@ -145,10 +138,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
+                $scope.Response = data.description;
               });
           };
     })
@@ -189,10 +179,7 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
+                $scope.Response = data.description;
               });
           };
     });

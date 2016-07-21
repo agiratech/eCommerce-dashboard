@@ -16,10 +16,7 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
             })
             .error(function (data, status, header, config) {
               console.log(11111111111)
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+              $scope.Response = data.description;
             });
         };
         $scope.GetAllData();
@@ -33,10 +30,7 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
             })
             .error(function (data, status, header, config) {
               console.log(11111111111)
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+              $scope.Response = data.description;
             });
         };
         // show the shipping option detail

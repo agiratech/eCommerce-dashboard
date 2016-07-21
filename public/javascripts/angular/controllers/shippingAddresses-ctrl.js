@@ -9,10 +9,8 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
                 $scope.valueship = data.shippingAddresses;
             })
             .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                $scope.ResponseDetails = data;
+                console.log(data)
             });
         };
         // show the shipping option detail
@@ -113,10 +111,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
               })
               .error(function (data, status, header, config) {
                 console.log(data)
-                  $scope.ResponseDetails = "Data: " + data +
-                      "<br />status: " + status +
-                      "<br />headers: " + jsonFilter(header) +
-                      "<br />config: " + jsonFilter(config);
+                  $scope.Response = data.description;
               });
           };
     })
@@ -147,10 +142,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
                 })
                 .error(function (data, status, header, config) {
                   console.log(data)
-                    $scope.ResponseDetails = "Data: " + data +
-                        "<br />status: " + status +
-                        "<br />headers: " + jsonFilter(header) +
-                        "<br />config: " + jsonFilter(config);
+                  $scope.Response = data.description;
                 });
             };
       })
@@ -181,10 +173,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
                 })
                 .error(function (data, status, header, config) {
                   console.log(data)
-                    $scope.ResponseDetails = "Data: " + data +
-                        "<br />status: " + status +
-                        "<br />headers: " + jsonFilter(header) +
-                        "<br />config: " + jsonFilter(config);
+                  $scope.Response = data.description;
                 });
             };
       });

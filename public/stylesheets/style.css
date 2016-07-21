@@ -44,6 +44,18 @@ th, td {
 h2 {
   color: #3A5479
 }
-.addButton {
+.add-button {
     text-align: right;
+}
+.required{
+      color:#EE5353;
+}
+.delete-icon {
+    color:#EE5353;
+}
+.edit-icon {
+    color: #FF9900;
+}
+.view-icon {
+    color: #0A66F5;
 }
