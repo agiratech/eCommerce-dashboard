@@ -55,11 +55,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/retailerDetails/:id',
                 templateUrl: 'templates/retailerDetails.html',
                 controller: 'GetRetailer'
+            })
+            .state('retailerProductConfigurationDetails', {
+                url: '/retailerProductConfigurationDetails/:id',
+                templateUrl: 'templates/retailerProductConfigurationDetails.html',
+                controller: 'GetRetailerProductConfig'
+            })
+            .state('shippingAddressDetails', {
+                url: '/shippingAddressDetails/:id',
+                templateUrl: 'templates/shippingAddressShow.html',
+                controller: 'ShowShippingAddress'
             });
-            // .state('productDetails', {
-            //     url: '/productDetails/:data',
-            //     templateUrl: 'templates/productDetails.html',
-            //     controller: 'ProductDetails'
-            // });
     }
 ]);
