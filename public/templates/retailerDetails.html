@@ -3,10 +3,10 @@
   <h3 class="modal-title">Retailer Details</h3>
 </div>
 <div class="modal-body">
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-4">ID</div>
     <div class="col-md-8">{{retailerInfo.id}}</div>
-  </div>
+  </div> -->
   <div class="row">
     <div class="col-md-4">name</div>
     <div class="col-md-8"><a href="{{retailerInfo.baseUrl}}" target="_blank">{{retailerInfo.name}}</a></div>
@@ -45,10 +45,10 @@
     <div class="panel panel-info" ng-repeat="retailerShippingOption in retailerInfo.shippingOptions">
       <div class="panel-heading">Shipping Option {{$index+1}}</div>
       <div class="panel-body">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-4">Shipping Option ID</div>
           <div class="col-md-8">{{retailerShippingOption.id}}</div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-md-4">Description</div>
           <div class="col-md-8">{{retailerShippingOption.description}}</div>
@@ -57,10 +57,10 @@
           <div class="col-md-4">Standardized Description</div>
           <div class="col-md-8">{{retailerShippingOption.standardizedDescription}}</div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-4">Standardized Id</div>
           <div class="col-md-8">{{retailerShippingOption.standardizedId}}</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -70,10 +70,10 @@
     <div class="panel panel-info" ng-repeat="productConfig in retailerInfo.products">
       <div class="panel-heading">RPC {{$index+1}}</div>
       <div class="panel-body">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-md-4">Product ID</div>
           <div class="col-md-8">{{productConfig.id}}</div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-md-4">Description</div>
           <div class="col-md-8">{{productConfig.description}}</div>
