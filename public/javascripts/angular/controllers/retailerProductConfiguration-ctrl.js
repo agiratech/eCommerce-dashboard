@@ -5,16 +5,17 @@ app.controller("RetailerProductConfigurationList", function($uibModal,$scope,myF
     $scope.Response = response.data.description;
   });
   $scope.show = function(id) {
-    var modalInstance = $uibModal.open({
-    templateUrl: 'templates/retailerProductConfigurationDetails.html',
-    controller: 'GetRetailerProductConfig',
-    size: 'lg',
-    resolve: {
-               param: function () {
-                   return {'retailerProductConfigId' : id };
-               }
-              }
-    });
+    // var modalInstance = $uibModal.open({
+    // templateUrl: 'templates/retailerProductConfigurationDetails.html',
+    // controller: 'GetRetailerProductConfig',
+    // size: 'lg',
+    // resolve: {
+    //            param: function () {
+    //                return {'retailerProductConfigId' : id };
+    //            }
+    //           }
+    // });
+    $location.path('/retailerProductConfigurationDetails/'+id);
   };
   $scope.create = function () {
     var modalInstance = $uibModal.open({
@@ -38,11 +39,11 @@ app.controller("RetailerProductConfigurationList", function($uibModal,$scope,myF
   };
 });
 
-app.controller('GetRetailerProductConfig', function($scope,$uibModalInstance,myFactory,param) {
+app.controller('GetRetailerProductConfig', function($scope,myFactory,$stateParams) {
   $scope.close = function () {
-    $uibModalInstance.dismiss('cancel');
+    window.history.back();
   };
-  myFactory.getData("retailerProductConfiguration/" + param.retailerProductConfigId).then(function(response) {
+  myFactory.getData("retailerProductConfiguration/" + $stateParams.id).then(function(response) {
     $scope.retailerProductConfigInfo = response.data.retailerProductConfiguration;
     }, function(response) {
       $scope.Response = response.data.description;
