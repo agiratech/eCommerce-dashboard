@@ -5,33 +5,20 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
         // $rootScope.row = "";
         // $scope.keyword = '';
         $scope.GetAllData = function () {
-            console.log(11111111111)
             $http.get('http://localhost:8000/v1/retailerShippingOptions')
             .success(function (data, status, headers, config) {
                 $scope.value = data.retailerShippingOptions;
 
             })
             .error(function (data, status, header, config) {
-              console.log(11111111111)
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                $scope.Response = data.description;
             });
         };
         $scope.GetAllData()
         // show the shipping option detail
         $scope.showRow = function(show) {
-          var modalInstance = $uibModal.open({
-          templateUrl: 'templates/retailerShippingOptionShow.html',
-          controller: 'ShowShippingOption',
-          resolve: {
-             param: function(){
-                return { "show" : show };
-               }
-            }
-          });
-          }
+          $location.path('/retailerShippingOptionDetails/'+show.id);
+        }
         // add to form button
         $scope.addRow = function() {
           var modalInstance = $uibModal.open({
@@ -142,16 +129,15 @@ app.controller("RetailerShippingOptions", ['$uibModal','$location','$rootScope',
               });
           };
     })
-    .controller('ShowShippingOption', function($scope, $uibModalInstance,$http,param) {
-        $scope.updateValue = parseInt(param.show)
-        $scope.retailerShippingOption = {
-          "name": param.show.name,
-          "retailerName": param.show.retailerName,
-          "retaildashShippingOptionName": param.show.retaildashShippingOptionName
-        };
+    .controller('ShowShippingOption', function($scope,myFactory,$stateParams) {
         $scope.close = function () {
-          $uibModalInstance.dismiss('cancel');
+          window.history.back();
         };
+        myFactory.getData("retailerShippingOption/" + $stateParams.id).then(function(response) {
+          $scope.retailerShippingOption = response.data.retailerShippingOptions;
+          }, function(response) {
+            $scope.Response = response.data.description;
+          });
     })
     .controller('DeleteShippingOption', function($scope,$templateCache, $uibModalInstance,$location,$http,param) {
         $scope.updateValue = parseInt(param.id)

@@ -15,17 +15,6 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         };
         // show the shipping option detail
         $scope.showRow = function(show) {
-          // var modalInstance = $uibModal.open({
-          // templateUrl: 'templates/shippingAddressShow.html',
-          // controller: 'ShowShippingAddress',
-          // resolve: {
-          //    param: function(){
-          //       return {
-          //         "retailerId" : show.retailerId,
-          //         "shippingId" : show.id };
-          //      }
-          //   }
-          // });
           $location.path('/shippingAddressDetails/'+show.id);
         }
         // add to form button
@@ -74,16 +63,16 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         };
         myFactory.getData("shippingAddress/" + $stateParams.id).then(function(response) {
           $scope.shippingAddress = response.data.shippingAddress;
-          $scope.retailerID = $scope.shippingAddress.retailerId;
+          // $scope.retailerID = $scope.shippingAddress.retailerId;
+          myFactory.getData("retailer/" + $scope.shippingAddress.retailerId).then(function(response) {
+            $scope.shippingRetailer = response.data.retailer;
+            }, function(response) {
+              $scope.Response = response.data.description;
+            });
           }, function(response) {
             $scope.Response = response.data.description;
           });
 
-        myFactory.getData("retailer/" + $scope.retailerID).then(function(response) {
-          $scope.shippingRetailer = response.data.retailer;
-          }, function(response) {
-            $scope.Response = response.data.description;
-          });
 
       })
       .controller('CreateShippingAddress', function($scope, $uibModalInstance,$http,myFactory) {

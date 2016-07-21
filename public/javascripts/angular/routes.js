@@ -65,6 +65,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/shippingAddressDetails/:id',
                 templateUrl: 'templates/shippingAddressShow.html',
                 controller: 'ShowShippingAddress'
+            })
+            .state('retailerShippingOptionDetails', {
+                url: '/retailerShippingOptionDetails/:id',
+                templateUrl: 'templates/retailerShippingOptionShow.html',
+                controller: 'ShowShippingOption'
             });
     }
 ]);
