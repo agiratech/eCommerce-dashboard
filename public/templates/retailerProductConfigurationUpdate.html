@@ -9,12 +9,12 @@
     <div class="col-md-3"></div>
   </div>
   <div class="row">
-    <div class="col-md-6">Retailer Product Configuration ID</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.id" readonly/></div>
-  </div>
-  <div class="row">
     <div class="col-md-6">Active</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.active"/></div>
+    <div class="col-md-6">
+    <input type="text" value="{{RetailerProductConfig.active}}"/><br>
+    <label><input type="radio" name="response" value="False" ng-model="RetailerProductConfig.active"> False</label>
+    <label><input type="radio"  name="response" value="True" ng-model="RetailerProductConfig.active"> True</label>
+  </div>
   </div>
   <div class="row">
     <div class="col-md-6">Max Number of Records</div>
