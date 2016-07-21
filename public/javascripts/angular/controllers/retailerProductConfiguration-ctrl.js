@@ -62,6 +62,14 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
+  myFactory.getData("retailers").then(function(response) {
+  $scope.retailerList = response.data.retailers;
+  console.log($scope.retailerList)
+}, function(response) {
+  alert(response.status);
+  alert(response.data);
+});
+  $scope.Urltype ={"SRCH","CDP","PDP"};
   $scope.createRetailerProductConfig = function() {
     var parameter = {"retailerId":parseInt($scope.RetailerProductConfig.retailerId,10),"url":$scope.RetailerProductConfig.url,"urlType":$scope.RetailerProductConfig.urlType,"keyword":$scope.RetailerProductConfig.keyword,"description":$scope.RetailerProductConfig.description,"active":Boolean($scope.RetailerProductConfig.active),"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
     myFactory.createData("retailerProductConfiguration",parameter).then(function(response) {
