@@ -4,8 +4,12 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-6">Retailer ID</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.retailerId"/></div>
+    <div class="col-md-6">Retailer Name</div>
+    <div class="col-md-6">
+      <select ng-model="RetailerProductConfig.retailerId" ng-change ="retailerData(RetailerProductConfig.retailerId)" class="form-control">
+        <option ng-repeat="x in retailerList" value = "{{x.id}}" >{{x.name}}</option>
+      </select>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-6">Url</div>
@@ -13,7 +17,11 @@
   </div>
   <div class="row">
     <div class="col-md-6">Url Type</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.urlType"/></div>
+    <div class="col-md-6">
+      <select ng-model="RetailerProductConfig.urlType" ng-options="item for item in Urltype">
+    </select>
+
+    <!-- <input type="text" ng-model="RetailerProductConfig.urlType"/></div> -->
   </div>
   <div class="row">
     <div class="col-md-6">Keyword</div>
@@ -25,7 +33,11 @@
   </div>
   <div class="row">
     <div class="col-md-6">Active</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.active"/></div>
+    <div class="col-md-6">
+    <label>
+    <input type="radio" value="True" ng-model="RetailerProductConfig.active"> True</label>
+    <label><input type="radio" value="False" ng-model="RetailerProductConfig.active"> False</label>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-6">Max Number of Records</div>
