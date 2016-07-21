@@ -1,7 +1,6 @@
 /**
 sample ShippingAddresses controller
 **/
-
 app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', function($location,$uibModal,$scope,$http) {
         $scope.rowship = '';
         $scope.GetAllData = function () {
@@ -21,7 +20,9 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
           controller: 'ShowShippingAddress',
           resolve: {
              param: function(){
-                return { "show" : show };
+                return {
+                  "retailerId" : show.retailerId,
+                  "shippingId" : show.id };
                }
             }
           });
@@ -42,7 +43,10 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
           controller: 'UpdateShippingAddress',
           resolve: {
              param: function(){
-                return { "update" : update };
+                return {
+                        "retailerId" : update.retailerId,
+                        "update" : update
+                      };
                }
             }
           });
@@ -59,25 +63,27 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
             }
           });
           }
-        console.log($scope.GetAllData())
+        $scope.GetAllData()
         $scope.gridOptions = { data: 'valueship', columnDefs: [ {name: 'address1'},{name: 'address2'}, {name: 'city'},{name: 'state'},{name: 'country'},{name: 'zipCode'},{name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.updateRow(row.entity)"></i> <i ng-click="grid.appScope.deleteRow(row.entity)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
         };
       }])
-      .controller('ShowShippingAddress', function($scope, $uibModalInstance,$http,param) {
-        $scope.updateValue = parseInt(param.show)
-        $scope.shippingAddress = {
-          "address1": param.show.address1,
-          "address2": param.show.address2,
-          "city": param.show.city,
-          "state": param.show.state,
-          "country": param.show.country,
-          "zipCode": param.show.zipCode
-        };
+      .controller('ShowShippingAddress', function($scope,$uibModalInstance,myFactory,param) {
         $scope.close = function () {
           $uibModalInstance.dismiss('cancel');
         };
-    })
-      .controller('CreateShippingAddress', function($scope, $uibModalInstance,$http) {
+        myFactory.getData("shippingAddress/" + param.shippingId).then(function(response) {
+          $scope.shippingAddress = response.data.shippingAddress;
+          }, function(response) {
+            $scope.Response = response.data.description;
+          });
+        myFactory.getData("retailer/" + param.retailerId).then(function(response) {
+          $scope.shippingRetailer = response.data.retailer;
+          }, function(response) {
+            $scope.Response = response.data.description;
+          });
+
+      })
+      .controller('CreateShippingAddress', function($scope, $uibModalInstance,$http,myFactory) {
         $scope.shippingAddress = {
           "id":"",
           "retailerId": "",
@@ -91,6 +97,15 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         $scope.close = function () {
           $uibModalInstance.dismiss('cancel');
         };
+
+        myFactory.getData("retailers").then(function(response) {
+          $scope.retailerList = response.data.retailers;
+          console.log($scope.retailerList)
+        }, function(response) {
+          alert(response.status);
+          alert(response.data);
+        });
+
         $scope.CreateShippingAddressValue = function() {
         var parameter = {"id":parseInt($scope.shippingAddress.id,10),"retailerId":parseInt($scope.shippingAddress.retailerId,10),"address1":$scope.shippingAddress.address1,"retailerName":$scope.shippingAddress.retailerName,"address2":$scope.shippingAddress.address2,"city":$scope.shippingAddress.city,"state":$scope.shippingAddress.state,"country":$scope.shippingAddress.country,"zipCode":$scope.shippingAddress.zipCode};
           console.log($scope.shippingAddress)
@@ -107,7 +122,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
               });
           };
     })
-      .controller('UpdateShippingAddress', function($scope, $uibModalInstance,$http,param) {
+      .controller('UpdateShippingAddress', function($scope, $uibModalInstance,$http,param,myFactory) {
           $scope.updateValue = parseInt(param.id)
           $scope.shippingAddress = {
             "id":param.update.id,
@@ -122,6 +137,11 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
           $scope.close = function () {
             $uibModalInstance.dismiss('cancel');
           };
+          myFactory.getData("retailer/" + param.retailerId).then(function(response) {
+          $scope.shippingRetailer = response.data.retailer;
+          }, function(response) {
+            $scope.Response = response.data.description;
+          });
           $scope.UpdateShippingAddressValue = function() {
           var parameter = {"id":parseInt($scope.shippingAddress.id,10),"retailerId":parseInt($scope.shippingAddress.retailerId,10),"address1":$scope.shippingAddress.address1,"retailerName":$scope.shippingAddress.retailerName,"address2":$scope.shippingAddress.address2,"city":$scope.shippingAddress.city,"state":$scope.shippingAddress.state,"country":$scope.shippingAddress.country,"zipCode":$scope.shippingAddress.zipCode};
             console.log($scope.retailerShippingOption)

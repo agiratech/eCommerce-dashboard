@@ -4,8 +4,12 @@
 </div>
 <div class="modal-body">
   <div class="row">
-    <div class="col-md-6">RetailerId</div>
-    <div class="col-md-6"><input type="text" ng-model="shippingAddress.retailerId"/></div>
+    <div class="col-md-6">RetailerName</div>
+      <div class="col-md-6">
+        <select ng-model="shippingAddress.retailerId" class="form-control">
+          <option ng-repeat="x in retailerList" value = "{{x.id}}" >{{x.name}}</option>
+        </select>
+      </div>
   </div>
   <div class="row">
     <div class="col-md-6">Address1</div>
