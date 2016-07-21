@@ -47,7 +47,7 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
     "urlType":"",
     "keyword":"",
     "description":"",
-    "active":"",
+    "active":true,
     "maxNumberOfRecords":""
   }
   $scope.close = function () {
@@ -62,7 +62,7 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
 });
   $scope.Urltype =["SRCH","CDP","PDP"];
   $scope.createRetailerProductConfig = function() {
-    var parameter = {"retailerId":parseInt($scope.RetailerProductConfig.retailerId,10),"url":$scope.RetailerProductConfig.url,"urlType":$scope.RetailerProductConfig.urlType,"keyword":$scope.RetailerProductConfig.keyword,"description":$scope.RetailerProductConfig.description,"active":Boolean($scope.RetailerProductConfig.active),"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
+    var parameter = {"retailerId":parseInt($scope.RetailerProductConfig.retailerId,10),"url":$scope.RetailerProductConfig.url,"urlType":$scope.RetailerProductConfig.urlType,"keyword":$scope.RetailerProductConfig.keyword,"description":$scope.RetailerProductConfig.description,"active":$scope.RetailerProductConfig.active,"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
     myFactory.createData("retailerProductConfiguration",parameter).then(function(response) {
     console.log(response.data);
     $scope.close();
@@ -84,13 +84,13 @@ app.controller('UpdateRetailerProductConfig', function($scope, $uibModalInstance
     $uibModalInstance.dismiss('cancel');
   };
   $scope.updateRetailerProductConfig = function() {
-    var parameter = {"active":Boolean($scope.RetailerProductConfig.active),"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
+    var parameter = {"active":$scope.RetailerProductConfig.active,"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
     myFactory.updateData("retailerProductConfiguration/"+param.retailerProductConfigInfo.id,parameter).then(function(response) {
       console.log($scope.RetailerProductConfig.active)
-      console.log(parameter)
-      console.log(response.data);
-    // $scope.close();
-    // window.location.reload();
+      // console.log(parameter)
+      // console.log(response.data);
+      $scope.close();
+      window.location.reload();
     }, function(response) {
       console.log(response.data);
       $scope.Response = response.data.description;

@@ -9,7 +9,7 @@
     <div class="col-md-3"></div>
   </div>
   <div class="row">
-  <div class="col-md-6">Retailer Name</div>
+  <div class="col-md-6">Retailer Name<span class="required">*</span></div>
     <div class="col-md-6">
       <select ng-model="RetailerProductConfig.retailerId" ng-change ="retailerData(RetailerProductConfig.retailerId)" class="form-control">
         <option ng-repeat="x in retailerList" value = "{{x.id}}" >{{x.name}}</option>
@@ -17,11 +17,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">Url</div>
+    <div class="col-md-6">Url<span class="required">*</span></div>
     <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.url"/></div>
   </div>
   <div class="row">
-    <div class="col-md-6">Url Type</div>
+    <div class="col-md-6">Url Type<span class="required">*</span></div>
     <div class="col-md-6">
       <select ng-model="RetailerProductConfig.urlType" ng-options="item for item in Urltype">
     </select>
@@ -39,9 +39,8 @@
   <div class="row">
     <div class="col-md-6">Active</div>
     <div class="col-md-6">
-    <label>
-    <input type="radio" value="True" ng-model="RetailerProductConfig.active"> True</label>
-    <label><input type="radio" value="False" ng-model="RetailerProductConfig.active"> False</label>
+      <input type="radio" ng-model="RetailerProductConfig.active" ng-value="true" boolean-grid-model>  True &nbsp;
+      <input type="radio" ng-model="RetailerProductConfig.active" ng-value="false" boolean-grid-model> False
     </div>
   </div>
   <div class="row">

@@ -9,11 +9,10 @@
     <div class="col-md-3"></div>
   </div>
   <div class="row">
-    <div class="col-md-6">Active</div>
+    <div class="col-md-6">Active<span class="required">*</span></div>
     <div class="col-md-6">
-    <input type="text" value="{{RetailerProductConfig.active}}"/><br>
-    <label><input type="radio" name="response" value="False" ng-model="RetailerProductConfig.active"> False</label>
-    <label><input type="radio"  name="response" value="True" ng-model="RetailerProductConfig.active"> True</label>
+    <input type="radio" ng-model="RetailerProductConfig.active" ng-value="true" boolean-grid-model>  True &nbsp;
+  <input type="radio" ng-model="RetailerProductConfig.active" ng-value="false" boolean-grid-model> False
   </div>
   </div>
   <div class="row">
