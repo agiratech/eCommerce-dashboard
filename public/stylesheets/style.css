@@ -77,3 +77,6 @@ h2 {
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #30426a;
 }
+.ui-grid-cell-contents {
+    padding: 5px 5px 5px 10px;
+}

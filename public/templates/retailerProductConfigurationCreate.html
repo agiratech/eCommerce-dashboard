@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-md-6">Url Type<span class="required">*</span></div>
     <div class="col-md-6">
-      <select ng-model="RetailerProductConfig.urlType" ng-options="item for item in Urltype">
+      <select ng-model="RetailerProductConfig.urlType"  ng-change = "maxShow(RetailerProductConfig.urlType)" ng-options="item for item in Urltype" class="form-control" >
     </select>
 
     <!-- <input type="text" ng-model="RetailerProductConfig.urlType"/></div> -->
@@ -43,9 +43,9 @@
       <input type="radio" ng-model="RetailerProductConfig.active" ng-value="false" boolean-grid-model> False
     </div>
   </div>
-  <div class="row">
+  <div class="row" ng-show = "maxValue">
     <div class="col-md-6">Max Number of Records</div>
-    <div class="col-md-6"><input type="text" ng-model="RetailerProductConfig.maxNumberOfRecords"/></div>
+    <div class="col-md-6"> <input type="text" ng-model="RetailerProductConfig.maxNumberOfRecords"/></div>
   </div>
 </div>
 <div class="modal-footer">
