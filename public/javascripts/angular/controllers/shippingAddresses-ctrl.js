@@ -15,18 +15,19 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         };
         // show the shipping option detail
         $scope.showRow = function(show) {
-          var modalInstance = $uibModal.open({
-          templateUrl: 'templates/shippingAddressShow.html',
-          controller: 'ShowShippingAddress',
-          resolve: {
-             param: function(){
-                return {
-                  "retailerId" : show.retailerId,
-                  "shippingId" : show.id };
-               }
-            }
-          });
-          }
+          // var modalInstance = $uibModal.open({
+          // templateUrl: 'templates/shippingAddressShow.html',
+          // controller: 'ShowShippingAddress',
+          // resolve: {
+          //    param: function(){
+          //       return {
+          //         "retailerId" : show.retailerId,
+          //         "shippingId" : show.id };
+          //      }
+          //   }
+          // });
+          $location.path('/shippingAddressDetails/'+show.id);
+        }
         // add to form button
         $scope.addRow = function() {
           var modalInstance = $uibModal.open({
@@ -67,16 +68,18 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         $scope.gridOptions = { data: 'valueship', columnDefs: [ {name: 'address1'},{name: 'address2'}, {name: 'city'},{name: 'state'},{name: 'country'},{name: 'zipCode'},{name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.updateRow(row.entity)"></i> <i ng-click="grid.appScope.deleteRow(row.entity)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
         };
       }])
-      .controller('ShowShippingAddress', function($scope,$uibModalInstance,myFactory,param) {
+      .controller('ShowShippingAddress', function($scope,myFactory,$stateParams) {
         $scope.close = function () {
-          $uibModalInstance.dismiss('cancel');
+          window.history.back();
         };
-        myFactory.getData("shippingAddress/" + param.shippingId).then(function(response) {
+        myFactory.getData("shippingAddress/" + $stateParams.id).then(function(response) {
           $scope.shippingAddress = response.data.shippingAddress;
+          $scope.retailerID = $scope.shippingAddress.retailerId;
           }, function(response) {
             $scope.Response = response.data.description;
           });
-        myFactory.getData("retailer/" + param.retailerId).then(function(response) {
+
+        myFactory.getData("retailer/" + $scope.retailerID).then(function(response) {
           $scope.shippingRetailer = response.data.retailer;
           }, function(response) {
             $scope.Response = response.data.description;
