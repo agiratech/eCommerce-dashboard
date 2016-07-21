@@ -25,20 +25,20 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
               }
     });
   };
-  $scope.delete = function (id) {
+  $scope.delete = function (data) {
     var modalInstance = $uibModal.open({
     templateUrl: 'templates/retailerDelete.html',
     controller: 'DeleteRetailer',
     resolve: {
                param: function () {
-                   return {'retailerId' : id };
+                   return {'retailerInfo' : data };
                }
               }
     });
   };
 
   $scope.gridOptions = {data: 'retailerList', columnDefs: [
-      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'active'},{name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity.id)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
+      { name: 'name', cellTemplate: '<div><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'active'},{name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
   };
 });
 
@@ -129,12 +129,12 @@ app.controller('UpdateRetailer', function($scope, $uibModalInstance, myFactory,p
 });
 
 app.controller('DeleteRetailer', function($scope, $uibModalInstance, myFactory,param) {
-  $scope.retailerID = param.retailerId;
+  $scope.retailerName = param.retailerInfo.name;
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
   $scope.deleteRetailer = function() {
-    myFactory.deleteData("retailer/"+param.retailerId).then(function(response) {
+    myFactory.deleteData("retailer/"+param.retailerInfo.id).then(function(response) {
     console.log(response.data);
     $scope.close();
     window.location.reload();

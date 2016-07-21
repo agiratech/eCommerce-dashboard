@@ -8,20 +8,17 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
         $scope.names = ["centauro","walmart","passarela","dafiti","centauro-light","marisa"];
         // $scope.names = [{model:"centauro"},{model:"walmart"},{model:"passarala"},{model: "dafiti"},{model: "centauro-light"},{model:"marisa"}];
         $scope.GetAllData = function () {
-            console.log(11111111111)
             $http.get('http://localhost:8000/v1/retailerProductConfigurationUrls/centauro')
             .success(function (data, status, headers, config) {
                 $scope.value = data.accounts;
 
             })
             .error(function (data, status, header, config) {
-              console.log(11111111111)
               $scope.Response = data.description;
             });
         };
         $scope.GetAllData();
         $scope.getData = function (data) {
-            console.log(222222222222)
             console.log(data)
             $http.get('http://localhost:8000/v1/retailerProductConfigurationUrls/' + data)
             .success(function (data, status, headers, config) {
@@ -29,7 +26,6 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
                 console.log($scope.value)
             })
             .error(function (data, status, header, config) {
-              console.log(11111111111)
               $scope.Response = data.description;
             });
         };
@@ -46,7 +42,7 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
           });
           }
 
-        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div><button class = "btn btn-xs btn-primary" ng-click="grid.appScope.showRow(row.entity)" type="button"> <i class="fa fa-eye" aria-hidden="true"> </i> </button> </div>'}],
+        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i></div>'}],
         };
       }])
       .controller('ShowLoginAccount', function($scope, $uibModalInstance,$http,param) {

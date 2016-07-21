@@ -59,3 +59,21 @@ h2 {
 .view-icon {
     color: #0A66F5;
 }
+.panel-info {
+  border-color: #30426a;
+}
+.panel-info > .panel-heading {
+  color: #b2bfdc;
+  background-color: #30426a;
+  border-color: #30426a;
+}
+.panel-info > .panel-heading + .panel-collapse > .panel-body {
+  border-top-color: #30426a;
+}
+.panel-info > .panel-heading .badge {
+  color: #d9edf7;
+  background-color: #31708f;
+}
+.panel-info > .panel-footer + .panel-collapse > .panel-body {
+  border-bottom-color: #30426a;
+}
