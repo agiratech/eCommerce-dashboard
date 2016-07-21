@@ -83,3 +83,6 @@ h2 {
 .row :nth-child(even){
   background-color:green;
 }*/
+.ui-grid-cell-contents {
+    padding: 5px 5px 5px 10px;
+}

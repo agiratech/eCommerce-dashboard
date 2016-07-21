@@ -50,6 +50,13 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
     "active":true,
     "maxNumberOfRecords":""
   }
+  $scope.maxShow = function(type){
+    if (type == "PDP"){
+      $scope.maxValue = ""
+    }else {
+      $scope.maxValue = type
+    }
+  };
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
