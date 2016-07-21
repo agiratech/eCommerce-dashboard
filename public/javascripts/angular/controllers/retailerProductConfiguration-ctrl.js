@@ -59,6 +59,7 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
     "active":"",
     "maxNumberOfRecords":""
   }
+  $scope.Urltype = [ "SRCH", "CDP", "PDP"]
   $scope.close = function () {
     $uibModalInstance.dismiss('cancel');
   };
@@ -69,7 +70,7 @@ app.controller('CreateRetailerProductConfig', function($scope, $uibModalInstance
   alert(response.status);
   alert(response.data);
 });
-  $scope.Urltype ={"SRCH","CDP","PDP"};
+
   $scope.createRetailerProductConfig = function() {
     var parameter = {"retailerId":parseInt($scope.RetailerProductConfig.retailerId,10),"url":$scope.RetailerProductConfig.url,"urlType":$scope.RetailerProductConfig.urlType,"keyword":$scope.RetailerProductConfig.keyword,"description":$scope.RetailerProductConfig.description,"active":Boolean($scope.RetailerProductConfig.active),"maxNumberOfRecords":parseInt($scope.RetailerProductConfig.maxNumberOfRecords)};
     myFactory.createData("retailerProductConfiguration",parameter).then(function(response) {
@@ -97,7 +98,7 @@ app.controller('UpdateRetailerProductConfig', function($scope, $uibModalInstance
     myFactory.updateData("retailerProductConfiguration/"+param.retailerProductConfigInfo.id,parameter).then(function(response) {
       console.log($scope.RetailerProductConfig.active)
       console.log(parameter)
-    console.log(response.data);
+      console.log(response.data);
     // $scope.close();
     // window.location.reload();
     }, function(response) {
