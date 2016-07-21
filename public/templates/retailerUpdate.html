@@ -4,6 +4,11 @@
 </div>
 <div class="modal-body">
   <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><span style="color:red">{{Response}}</span></div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
     <div class="col-md-6">Retailer ID</div>
     <div class="col-md-6"><input type="text" ng-model="retailer.id" readonly/></div>
   </div>
@@ -26,11 +31,6 @@
   <div class="row">
     <div class="col-md-6">Currency Format</div>
     <div class="col-md-6"><input type="text" ng-model="retailer.currencyFormat"/></div>
-  </div>
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6"><span style="color:red">{{Response}}</span></div>
-    <div class="col-md-3"></div>
   </div>
 </div>
 <div class="modal-footer">

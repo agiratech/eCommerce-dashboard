@@ -4,6 +4,11 @@
 </div>
 <div class="modal-body">
   <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><span style="color:red">{{Response}}</span></div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
     <div class="col-md-6">RetailerName</div>
     <div class="col-md-6">
       <select ng-model="retailerShippingOption.retailerId" ng-change ="retailerData(retailerShippingOption.retailerId)" class="form-control">
@@ -22,11 +27,6 @@
   <div class="row">
     <div class="col-md-6">Name</div>
     <div class="col-md-6"><input type="text" ng-model="retailerShippingOption.name"/></div>
-  </div>
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6"><span style="color:red">{{Response}}</span></div>
-    <div class="col-md-3"></div>
   </div>
 </div>
 <div class="modal-footer">
