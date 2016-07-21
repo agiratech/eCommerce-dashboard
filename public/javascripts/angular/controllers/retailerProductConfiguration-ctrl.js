@@ -25,7 +25,7 @@ app.controller("RetailerProductConfigurationList", function($uibModal,$scope,myF
     });
   };
   $scope.gridOptionForRetailerProductConfig = {data: 'retailerProductConfigurationList', columnDefs: [
-      { name: 'url'},{ name: 'urlType'},{ name: 'retailerName'},{ name: 'active'},{name: 'Events', cellTemplate: '<div><i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i></div>'}],
+      { name: 'url'},{ name: 'urlType'},{ name: 'retailerName'},{ name: 'active'},{name: 'Events', cellTemplate: '<div class="ui-grid-cell-contents"><i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </i> <i class=" ui-grid-cell-contents fa fa-edit view-icon" ng-click="grid.appScope.update(row.entity)"></i></div>'}],
   };
 });
 

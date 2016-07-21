@@ -42,7 +42,7 @@ app.controller("RetailerLoginAccounts", ['$location','$uibModal','$scope','$http
           });
           }
 
-        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i></div>'}],
+        $scope.gridOptions = { data: 'value', columnDefs: [ {name: 'userName'},{name: 'password'}, {name:'Events', cellTemplate: '<div class="ui-grid-cell-contents"> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i></div>'}],
         };
       }])
       .controller('ShowLoginAccount', function($scope, $uibModalInstance,$http,param) {
