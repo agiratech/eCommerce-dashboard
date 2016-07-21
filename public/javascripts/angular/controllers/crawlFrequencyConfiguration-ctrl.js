@@ -21,7 +21,7 @@ app.controller('CrawlFrequencyConfigurationList', function($uibModal,$scope,myFa
     });
   };
   $scope.gridOptionForCrawlFreqConfig = {data: 'crawlFrequencyConfigList', columnDefs: [
-      { name: 'name'},{ name: 'month'},{ name: 'day'},{ name: 'dayOfMonth'},{ name: 'hour'},{ name: 'minutes'},{ name: 'disabled'},{ name: 'priority'},{ name: 'jobKey'},{name: 'Events', cellTemplate: '<div><i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i></div>'}],
+      { name: 'name'},{ name: 'month'},{ name: 'day'},{ name: 'dayOfMonth'},{ name: 'hour'},{ name: 'minutes'},{ name: 'disabled'},{ name: 'priority'},{ name: 'jobKey'},{name: 'Events', cellTemplate: '<div class="ui-grid-cell-contents" ><i class="fa fa-edit view-icon" ng-click="grid.appScope.update(row.entity)"></i></div>'}],
   };
 });
 

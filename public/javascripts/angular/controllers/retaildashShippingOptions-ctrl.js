@@ -33,7 +33,7 @@ app.controller("RetaildashShippingOptionList", function($uibModal,$scope,myFacto
     });
   };
   $scope.gridOptionsForRetaildash = {data: 'retaildashShippingOptionList', columnDefs: [
-      { name: 'name'},{name: 'Events', cellTemplate: '<div><i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity.id)" class="fa fa-times delete-icon" aria-hidden="true"></i></div>'}],
+      { name: 'name'},{name: 'Events', cellTemplate: '<div class="ui-grid-cell-contents"><i class="fa fa-edit view-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity.id)" class=" ui-grid-cell-contents fa fa-times view-icon" aria-hidden="true"></i></div>'}],
   };
 });
 
