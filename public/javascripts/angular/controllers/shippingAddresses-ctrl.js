@@ -1,7 +1,6 @@
 /**
 sample ShippingAddresses controller
 **/
-
 app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', function($location,$uibModal,$scope,$http) {
         $scope.rowship = '';
         $scope.GetAllData = function () {
@@ -79,7 +78,7 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
           $uibModalInstance.dismiss('cancel');
         };
     })
-      .controller('CreateShippingAddress', function($scope, $uibModalInstance,$http) {
+      .controller('CreateShippingAddress', function($scope, $uibModalInstance,$http,myFactory) {
         $scope.shippingAddress = {
           "id":"",
           "retailerId": "",
@@ -93,6 +92,15 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
         $scope.close = function () {
           $uibModalInstance.dismiss('cancel');
         };
+
+        myFactory.getData("retailers").then(function(response) {
+          $scope.retailerList = response.data.retailers;
+          console.log($scope.retailerList)
+        }, function(response) {
+          alert(response.status);
+          alert(response.data);
+        });
+
         $scope.CreateShippingAddressValue = function() {
         var parameter = {"id":parseInt($scope.shippingAddress.id,10),"retailerId":parseInt($scope.shippingAddress.retailerId,10),"address1":$scope.shippingAddress.address1,"retailerName":$scope.shippingAddress.retailerName,"address2":$scope.shippingAddress.address2,"city":$scope.shippingAddress.city,"state":$scope.shippingAddress.state,"country":$scope.shippingAddress.country,"zipCode":$scope.shippingAddress.zipCode};
           console.log($scope.shippingAddress)
