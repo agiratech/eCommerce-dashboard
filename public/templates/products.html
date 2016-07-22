@@ -4,8 +4,8 @@
     <!-- <i class="fa fa-arrow-left" aria-hidden="true" ng-click="previous()"></i>
     &nbsp;&nbsp;
     <i class="fa fa-arrow-right" aria-hidden="true" ng-click="next()"></i> -->
-    <button class="btn btn-primary" type="button" ng-click="previous()"><span class="fa fa-arrow-left">  Previous</span></button>
-    <button class="btn btn-primary" type="button" ng-click="next()">Next<span class="fa fa-arrow-right"></span></button>
+    <button class="btn btn-primary" type="button" ng-click="previous()"><span class="fa fa-arrow-left"> Previous</span></button>
+    <button class="btn btn-primary" type="button" ng-click="next()">Next <span class="fa fa-arrow-right"></span></button>
   </div>
 </div>
 <div class="model-body">
@@ -18,24 +18,28 @@
           <div class="col-md-8">{{product.retailerName}}</div>
         </div>
         <div class="row">
+          <div class="col-md-4">Product Name</div>
+          <div class="col-md-8">{{product.productName}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Sku Code</div>
+          <div class="col-md-8">{{product.skuCode}}</div>
+        </div>
+        <div class="row">
           <div class="col-md-4">Brand</div>
           <div class="col-md-8">{{product.brand}}</div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">Product Description</div>
+          <div class="col-md-8">{{product.productDescription}}</div>
         </div>
         <!-- <div class="row">
           <div class="col-md-4">Retailer Product Configuration Id</div>
           <div class="col-md-8">{{product.retailerProductConfigurationId}}</div>
         </div> -->
         <div class="row">
-          <div class="col-md-4">Product Name</div>
-          <div class="col-md-8">{{product.productName}}</div>
-        </div>
-        <div class="row">
           <div class="col-md-4">Product Code</div>
           <div class="col-md-8">{{product.productCode}}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">Product Description</div>
-          <div class="col-md-8">{{product.productDescription}}</div>
         </div>
         <div class="row">
           <div class="col-md-4">Image Url Thumbnail</div>
@@ -68,10 +72,6 @@
         <div class="row">
           <div class="col-md-4">Model Number</div>
           <div class="col-md-8">{{product.modelNumber}}</div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">Sku Code</div>
-          <div class="col-md-8">{{product.skuCode}}</div>
         </div>
         <div class="row">
           <div class="col-md-4">Barcode</div>

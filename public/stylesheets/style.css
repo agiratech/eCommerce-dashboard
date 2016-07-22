@@ -77,12 +77,15 @@ h2 {
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #30426a;
 }
-/*.row :nth-child(odd){
-  background-color:red;
+.row-even {
+  background-color:#ffffff;
 }
-.row :nth-child(even){
-  background-color:green;
-}*/
+.row-odd {
+  background-color:#f3f3f3;
+}
 .ui-grid-cell-contents {
     padding: 5px 5px 5px 10px;
+}
+.active {
+    background-color : #001a33;
 }

@@ -1,0 +1,62 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="close()">&times;</button>
+  <h3 class="modal-title">Enter Crawl Frequency Configuration Details</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6"><span style="color:red">{{Response}}</span></div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="form-group col-md-12">
+        <label class="control-label">Spiders</label>
+        <div><input type="text" ng-model="crawlFreq.spiderId"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Tags</label>
+        <div><input type="text" ng-model="tags"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Priority</label>
+        <div><input type="text" ng-model="crawlFreq.priority"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Description</label>
+        <div><input type="text" ng-model="crawlFreq.description"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Active</label>
+        <div><input type="radio" ng-model="crawlFreq.disabled" ng-value="true" boolean-grid-model>  True &nbsp;
+        <input type="radio" ng-model="crawlFreq.disabled" ng-value="false" boolean-grid-model> False
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group col-md-12">
+        <label class="control-label">Choose Month</label>
+        <div><input type="text" ng-model="crawlFreq.month"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Choose day of week</label>
+        <div><input type="text" ng-model="crawlFreq.day"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Choose day of month</label>
+        <div><input type="text" ng-model="crawlFreq.day"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Choose Hour</label>
+        <div><input type="text" ng-model="crawlFreq.hour"></div>
+      </div>
+      <div class="form-group col-md-12">
+        <label class="control-label">Choose Minutes</label>
+        <div><input type="text" ng-model="crawlFreq.minutes"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="createCrawlFreq()">Save</button>
+</div>
