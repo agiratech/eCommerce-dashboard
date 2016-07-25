@@ -6,7 +6,21 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
     $scope.Response = response.data.description;
   });
   $scope.show = function(id) {
-    $location.path('/retailerDetails/'+id);
+    console.log(id)
+    myFactory.getData("retailer/" + id).then(function(response) {
+        console.log("asfdddd")
+          // $scope.date = response.data.crawlDays
+          // $scope.time = response.data.crawlTime
+          // console.log(9875541)
+          // $scope.time_hour = $scope.time.split(":")
+          // if (len($scope.time_hour) <= 2){
+          //   $scope.time_hours = $scope.time_hour[0]
+          //   $scope.time_munite = $scope.time_hour[1]
+          //   console.log(777777)
+          // }
+          // }, function(response) {
+          });
+    // $location.path('/retailerDetails/'+id);
   };
   $scope.create = function () {
     var modalInstance = $uibModal.open({
@@ -66,6 +80,21 @@ app.controller('GetRetailer', function($scope,myFactory,$stateParams) {
   $scope.close = function () {
     window.history.back();
   };
+  myFactory.getData("retailer/" + $stateParams.id).then(function(response) {
+        console.log("asfdddd")
+          $scope.date = response.data.retailer.crawlDays
+          $scope.time = response.data.retailer.crawlTime
+          $scope.time_hours =[];
+          $scope.time_munite = [];
+          var timeAndHour = $scope.time.split(",");
+          for(var i = 0; i < timeAndHour.length; i++){
+          console.log($scope.time_hour)
+          $scope.time_hour = timeAndHour[i].split(":")
+          $scope.time_hours.push($scope.time_hour[0])
+          $scope.time_munite.push($scope.time_hour[1])
+          }
+          }, function(response) {
+  });
   myFactory.getData("retailer/" + $stateParams.id).then(function(response) {
     $scope.retailerInfo = response.data.retailer;
     }, function(response) {

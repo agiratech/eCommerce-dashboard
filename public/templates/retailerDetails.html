@@ -16,30 +16,30 @@
     <div class="col-md-8">{{retailerInfo.currency}}</div>
   </div>
   <div class="row">
-    <div class="col-md-4">Crawl Days</div>
-    <div class="col-md-8">{{retailerInfo.crawlDays}}</div>
-  </div>
-  <div class="row">
-    <div class="col-md-4">Crawl Time</div>
-    <div class="col-md-8">{{retailerInfo.crawlTime}}</div>
-  </div>
-  <div class="row">
     <div class="col-md-4">Active</div>
     <div class="col-md-8">{{retailerInfo.active}}</div>
   </div>
-  <h3 class="modal-title">Retailer Shipping Options</h3>
-  <!-- <div class="row">
-    <div class="col-md-3">Shipping Option ID</div>
-    <div class="col-md-3">Description</div>
-    <div class="col-md-3">Standardized Description</div>
-    <div class="col-md-3">Standardized Id</div>
+  <div class="panel-group ">
+  <div class="panel panel-info ng-scope">
+  <div class="panel-heading">
+  <div class="row">
+    <div class= "col-md-4">Day of Week</div>
+    <div class= "col-md-4">Hour</div>
+    <div class= "col-md-4">Minute</div>
   </div>
-  <div class="row" ng-repeat="retailerShippingOption in retailerInfo.shippingOptions">
-    <div class="col-md-3">{{retailerShippingOption.id}}</div>
-    <div class="col-md-3">{{retailerShippingOption.description}}</div>
-    <div class="col-md-3">{{retailerShippingOption.standardizedDescription}}</div>
-    <div class="col-md-3">{{retailerShippingOption.standardizedId}}</div>
-  </div> -->
+  </div>
+  <div class="panel-body">
+  <div class="row">
+    <div class= "col-md-4">{{retailerInfo.crawlDays}}</div>
+    <div class= "col-md-4" ><div ng-repeat="(key, val) in time_hours">
+    {{val}}
+    </div>
+    </div>
+    <div class= "col-md-4"><div  ng-repeat="(key, val) in time_munite">{{val}}</div></div>
+  </div>
+  </div>
+  </div>
+  <h3 class="modal-title">Retailer Shipping Options</h3>
   <br/>
   <div class="panel-group">
     <div class="panel panel-info" ng-repeat="retailerShippingOption in retailerInfo.shippingOptions">
