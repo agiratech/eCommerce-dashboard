@@ -14,62 +14,114 @@ app.config(['$stateProvider', '$urlRouterProvider',
             .state('retailers', {
                 url: '/retailers',
                 templateUrl: 'templates/retailers.html',
-                controller: 'RetailerList'
+                controller: 'RetailerList',
+                data: {
+                        displayName: 'Retailers',
+                      }
             })
             .state('retailerShippingOptions', {
                 url: '/retailerShippingOptions',
                 templateUrl: 'templates/retailerShippingOptions.html',
-                controller: 'RetailerShippingOptions'
+                controller: 'RetailerShippingOptions',
+                data: {
+                        displayName: 'Retailer Shipping Options',
+                      }
             })
             .state('retailerLoginAccounts', {
                 url: '/retailerLoginAccounts',
                 templateUrl: 'templates/retailerLoginAccounts.html',
-                controller: 'RetailerLoginAccounts'
+                controller: 'RetailerLoginAccounts',
+                data: {
+                        displayName: 'Retailer Login Accounts',
+                      }
             })
             .state('shippingAddresses', {
                 url: '/shippingAddresses',
                 templateUrl: 'templates/shippingAddresses.html',
-                controller: 'ShippingAddresses'
+                controller: 'ShippingAddresses',
+                data: {
+                        displayName: 'Shipping Addresses',
+                      }
             })
             .state('retaildashShippingOptions', {
                 url: '/retaildashShippingOptions',
                 templateUrl: 'templates/retaildashShippingOptions.html',
-                controller: 'RetaildashShippingOptionList'
+                controller: 'RetaildashShippingOptionList',
+                data: {
+                        displayName: 'Retaildash Shipping Options',
+                      }
             })
             .state('retailerProductConfigurations', {
                 url: '/retailerProductConfigurations',
                 templateUrl: 'templates/retailerProductConfigurations.html',
-                controller: 'RetailerProductConfigurationList'
+                controller: 'RetailerProductConfigurationList',
+                data: {
+                        displayName: 'Retailer Product Configurations',
+                      }
             })
             .state('crawlFrequencyConfigurations', {
                 url: '/crawlFrequencyConfigurations',
                 templateUrl: 'templates/crawlFrequencyConfigurations.html',
-                controller: 'CrawlFrequencyConfigurationList'
+                controller: 'CrawlFrequencyConfigurationList',
+                data: {
+                        displayName: 'Crawl Frequency Configurations',
+                      }
             })
             .state('products', {
                 url: '/products',
                 templateUrl: 'templates/products.html',
-                controller: 'ProductList'
+                controller: 'ProductList',
+                data: {
+                        displayName: 'Products',
+                      }
             })
-            .state('retailerDetails', {
+            .state('retailers.details', {
                 url: '/retailerDetails/:id',
-                templateUrl: 'templates/retailerDetails.html',
-                controller: 'GetRetailer'
+                views: {
+                        "@": { // rule for absolutely targetting the unnamed view in root unnamed state.
+                            templateUrl: 'templates/retailerDetails.html',
+                            controller: 'GetRetailer',
+                        }
+                    },
+                data: {
+                        displayName: 'Retailer Details',
+                      }
             })
-            .state('retailerProductConfigurationDetails', {
+            .state('retailerProductConfigurations.details', {
                 url: '/retailerProductConfigurationDetails/:id',
-                templateUrl: 'templates/retailerProductConfigurationDetails.html',
-                controller: 'GetRetailerProductConfig'
+                views: {
+                        "@": {
+                            templateUrl: 'templates/retailerProductConfigurationDetails.html',
+                            controller: 'GetRetailerProductConfig',
+                        }
+                    },
+                data: {
+                        displayName: 'Retailer Product Configuration Details',
+                      }
             })
-            .state('shippingAddressDetails', {
+            .state('shippingAddresses.details', {
                 url: '/shippingAddressDetails/:id',
-                templateUrl: 'templates/shippingAddressShow.html',
-                controller: 'ShowShippingAddress'
+                views: {
+                        "@": {
+                            templateUrl: 'templates/shippingAddressShow.html',
+                            controller: 'ShowShippingAddress',
+                        }
+                    },
+                data: {
+                        displayName: 'Shipping Address Details',
+                      }
             })
-            .state('retailerShippingOptionDetails', {
+            .state('retailerShippingOptions.details', {
                 url: '/retailerShippingOptionDetails/:id',
-                templateUrl: 'templates/retailerShippingOptionShow.html',
-                controller: 'ShowShippingOption'
+                views: {
+                        "@": {
+                            templateUrl: 'templates/retailerShippingOptionShow.html',
+                            controller: 'ShowShippingOption',
+                        }
+                    },
+                data: {
+                        displayName: 'Retailer Shipping Option Details',
+                      }
             });
     }
 ]);

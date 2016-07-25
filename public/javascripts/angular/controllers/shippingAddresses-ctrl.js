@@ -54,8 +54,9 @@ app.controller("ShippingAddresses", ['$location','$uibModal','$scope','$http', f
           });
           }
         $scope.GetAllData()
-        $scope.gridOptions = { data: 'valueship', columnDefs: [ {name: 'address1'},{name: 'address2'}, {name: 'city'},{name: 'state'},{name: 'country'},{name: 'zipCode'},{name:'Events', cellTemplate: '<div class="ui-grid-cell-contents"> <i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i> <i class=" ui-grid-cell-contents fa fa-edit view-icon" ng-click="grid.appScope.updateRow(row.entity)"></i> <i ng-click="grid.appScope.deleteRow(row.entity)" class=" ui-grid-cell-contents fa fa-times view-icon" aria-hidden="true"></i></div>'}],
+        $scope.gridOptions = { data: 'valueship', columnDefs: [ {name: 'address1'},{name: 'address2'}, {name: 'city'},{name: 'state'},{name: 'country'},{name: 'zipCode'},{name:'Events', cellTemplate: '<div class="ui-grid-cell-contents"><a class="fa fa-eye view-icon" ui-sref="shippingAddresses.details({id: row.entity.id})"></a> <i class=" ui-grid-cell-contents fa fa-edit view-icon" ng-click="grid.appScope.updateRow(row.entity)"></i> <i ng-click="grid.appScope.deleteRow(row.entity)" class=" ui-grid-cell-contents fa fa-times view-icon" aria-hidden="true"></i></div>'}],
         };
+        //<i class="fa fa-eye view-icon" ng-click="grid.appScope.showRow(row.entity)" aria-hidden="true"> </i>
       }])
       .controller('ShowShippingAddress', function($scope,myFactory,$stateParams) {
         $scope.close = function () {

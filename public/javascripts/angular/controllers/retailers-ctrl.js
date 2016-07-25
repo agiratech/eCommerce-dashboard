@@ -38,8 +38,8 @@ app.controller("RetailerList", function($uibModal,$scope,myFactory,$location) {
   };
 
   $scope.gridOptions = {data: 'retailerList', columnDefs: [
-      { name: 'name', cellTemplate: '<div class="ui-grid-cell-contents"><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'active'},{name:'Events', cellTemplate: '<div class="ui-grid-cell-contents"> <i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"> </div>'}],
-      // </i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity)" class="fa fa-times delete-icon" aria-hidden="true"></i>
+      { name: 'name', cellTemplate: '<div class="ui-grid-cell-contents"><a href="{{row.entity.baseUrl}}" target="_blank">{{row.entity.name}}</a></div>'},{name: 'currency'},{name: 'active'},{name:'Events', cellTemplate: '<div class="ui-grid-cell-contents"> <a class="fa fa-eye view-icon" ui-sref="retailers.details({id: row.entity.id})"></a></div>'}],
+      //  <i class="fa fa-eye view-icon" ng-click="grid.appScope.show(row.entity.id)" aria-hidden="true"></i> <i class="fa fa-edit edit-icon" ng-click="grid.appScope.update(row.entity)"></i> <i ng-click="grid.appScope.delete(row.entity)" class="fa fa-times delete-icon" aria-hidden="true"></i>
   };
 });
 
