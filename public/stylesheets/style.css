@@ -77,11 +77,19 @@ h2 {
 .panel-info > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #30426a;
 }
-.row-even {
-  background-color:#ffffff;
-}
 .row-odd {
+  background-color:#ffffff;
+  padding:5px 0 0 0;
+}
+.row-even {
   background-color:#f3f3f3;
+  padding:5px 0 0 0;
+}
+.panel-body-content {
+  padding: 8px 0 0 0;
+}
+.modal-body-content {
+  padding: 0 0 0 0;
 }
 .ui-grid-cell-contents {
     padding: 5px 5px 5px 10px;
@@ -91,4 +99,11 @@ h2 {
 }
 .a-under-line {
   text-decoration : none;
+}
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #fff;
+    border-radius: 4px;
 }

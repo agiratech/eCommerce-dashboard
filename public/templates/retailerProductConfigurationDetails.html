@@ -2,40 +2,40 @@
 <button type="button" class="close" ng-click="close()">&times;</button>
 <h3 class="modal-title">Retailer Product Configuration Details</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body modal-body-content">
   <!-- <div class="row">
     <div class="col-md-4">ID</div>
     <div class="col-md-8">{{retailerProductConfigInfo.id}}</div>
   </div> -->
-  <div class="row">
+  <div class="row row-odd">
     <div class="col-md-4">Url</div>
-    <div class="col-md-8">{{retailerProductConfigInfo.url}}</div>
+    <div class="col-md-8"><a href="{{retailerProductConfigInfo.url}}" target="_blank">{{retailerProductConfigInfo.url}}</a></div>
   </div>
-  <div class="row">
+  <div class="row row-even">
     <div class="col-md-4">Url Type</div>
     <div class="col-md-8">{{retailerProductConfigInfo.urlType}}</div>
   </div>
-  <div class="row">
+  <div class="row row-odd">
     <div class="col-md-4">Retailer Name</div>
     <div class="col-md-8">{{retailerProductConfigInfo.retailerName}}</div>
   </div>
-  <div class="row">
+  <div class="row row-even">
     <div class="col-md-4">Spider Name</div>
     <div class="col-md-8">{{retailerProductConfigInfo.spiderName}}</div>
   </div>
-  <div class="row">
+  <div class="row row-odd">
     <div class="col-md-4">Active</div>
     <div class="col-md-8">{{retailerProductConfigInfo.active}}</div>
   </div>
-  <div class="row">
+  <div class="row row-even">
     <div class="col-md-4">Max No. of Records</div>
     <div class="col-md-8">{{retailerProductConfigInfo.maxNumberOfRecords}}</div>
   </div>
-  <div class="row">
+  <div class="row row-odd">
     <div class="col-md-4">Keyword</div>
     <div class="col-md-8">{{retailerProductConfigInfo.keyword}}</div>
   </div>
-  <div class="row">
+  <div class="row row-even">
     <div class="col-md-4">Description</div>
     <div class="col-md-8">{{retailerProductConfigInfo.description}}</div>
   </div>
