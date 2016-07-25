@@ -10,23 +10,16 @@
   </div>
   <div class="row">
     <div class="col-md-7">
-      <!-- <div class="form-group col-md-12">
-        <label class="control-label">Spider</label>
-        <div><input type="text" ng-model="crawlFreq.spiderId"></div>
-      </div> -->
-
       <div class="form-group col-md-12">
-        <label class="control-label">Spider Name</label>
+        <label class="control-label">Spider Name <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.spiderId" class="form-control" ng-change ="spiderData(crawlFreq.spiderId)">
           <option ng-repeat="x in crawlFreqData" value="{{x.id}}" >{{x.name}}</option>
         </select>
-        <!-- <span ng-model="crawlFreq.name"></span> -->
-        <!-- <input type="text" ng-model="crawlFreq.spiderId"> -->
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Name</label>
+        <label class="control-label">Name <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.name" class="form-control" ng-change ="spiderData(crawlFreq.spiderId)">
           <option ng-repeat="x in crawlFreqData">{{x.name}}</option>
@@ -34,18 +27,20 @@
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Tags</label>
+        <label class="control-label">Tags <span class="required">*</span></label>
         <div>
-        <!-- <input ng-model='crawlFreq.addtags[$index]' type='text' value='' /> -->
         <input type="text" ng-model="crawlFreq.addtags">
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Priority</label>
-        <div><input type="text" ng-model="crawlFreq.priority"></div>
+        <label class="control-label">Priority <span class="required">*</span></label>
+        <div>
+        <select ng-model= "crawlFreq.priority" ng-options="x for (x,y) in priorityType" class="form-control" >
+        </select>
+        </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Disabled</label>
+        <label class="control-label">Disabled <span class="required">*</span></label>
         <div>
         <input type="radio" ng-model="crawlFreq.disabled" ng-value="true" boolean-grid-model>  True &nbsp;
         <input type="radio" ng-model="crawlFreq.disabled" ng-value="false" boolean-grid-model> False
@@ -54,28 +49,28 @@
     </div>
     <div class="col-md-5">
       <div class="form-group col-md-12">
-        <label class="control-label">Choose Month</label>
+        <label class="control-label">Choose Month <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.month" ng-options="x for (x,y) in months" class="form-control" >
         </select>
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Choose day of week</label>
+        <label class="control-label">Choose day of week <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.day" ng-options="x for (x,y) in days" class="form-control" >
         </select>
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Choose day of month</label>
+        <label class="control-label">Choose day of month <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.dayOfMonth" ng-options="x for (x,y) in daysofMonth" class="form-control" >
         </select>
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Choose Hour</label>
+        <label class="control-label">Choose Hour <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.hour" class="form-control" >
           <option value="string:*">Every hours</option>
@@ -103,13 +98,11 @@
           <option label="21:00" value="21">21:00</option>
           <option label="22:00" value="22">22:00</option>
           <option label="23:00" value="23">23:00</option>
-          <!-- <option ng-repeat="x in hours" value = "{{x}}" >{{x}}</option> -->
         </select>
-        <!-- <input type="text" ng-model="crawlFreq.hour"> -->
         </div>
       </div>
       <div class="form-group col-md-12">
-        <label class="control-label">Choose Minutes</label>
+        <label class="control-label">Choose Minutes <span class="required">*</span></label>
         <div>
         <select ng-model="crawlFreq.minutes" ng-options="x for (x,y) in munites" class="form-control" >
         </select>
